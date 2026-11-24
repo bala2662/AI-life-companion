@@ -1,0 +1,18 @@
+# Render Blueprint Specification for AI Life Companion for Students
+services:
+  - type: web
+    name: ai-life-companion
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
+    region: oregon
+    branch: main
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: AI_MODEL
+        value: gpt-4o-mini
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_API_URL
+        value: https://api.openai.com/v1/chat/completions

@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+*.bak
+*.log
+*.zip
+tests/
+scratch/
+.env
+deploy_to_xampp.bat
+start.bat
+stop.bat
+run.vbs
+node_modules/
+npm-debug.log

@@ -1,0 +1,23 @@
+{
+  "name": "ai-unified-life-companion",
+  "version": "1.0.0",
+  "description": "AI Unified Life Companion — A Personalized AI Assistant for Education, Health, Daily Life, Fitness, and Career Development",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "test": "node backend/tests/api_test.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "ai",
+    "assistant",
+    "life-companion",
+    "study-planner",
+    "fitness",
+    "career",
+    "rag",
+    "memory"
+  ],
+  "author": "Antigravity AI Life Companion Team",
+  "license": "MIT"
+}

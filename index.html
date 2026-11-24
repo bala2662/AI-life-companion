@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>AI Unified Life Companion — Education, Health, Schedule & Career</title>
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- In-Browser PDF.js Library for PDF Reading and Text Chunking -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (typeof pdfjsLib !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+</head>
+<body>
+  <!-- ==========================================================================
+       STAGE 1: GRAND STANDALONE LOGO INTRO (Shows First For A Few Seconds)
+       ========================================================================== -->
+  <div id="splashIntro" class="splash-intro-screen">
+    <div class="splash-ambient-mesh">
+      <div class="mesh-orb orb-indigo"></div>
+      <div class="mesh-orb orb-purple"></div>
+      <div class="mesh-orb orb-cyan"></div>
+    </div>
+    
+    <div class="splash-centerpiece">
+      <!-- 3D Orbiting Cyber Logo Halo -->
+      <div class="cyber-logo-halo">
+        <div class="halo-ring ring-outer"></div>
+        <div class="halo-ring ring-middle"></div>
+        <div class="halo-ring ring-inner"></div>
+        <div class="grand-logo-core">
+          <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="splash-brand-badge">NEXT-GEN AI ARCHITECTURE</div>
+
+      <h1 class="splash-brand-title">
+        AI UNIFIED <span class="gradient-text-grand">LIFE COMPANION</span>
+      </h1>
+      <p class="splash-brand-subtitle">
+        A Personalized AI Assistant for Education, Health, Daily Life & Career Development
+      </p>
+
+      <!-- Animated Progress Loader Bar -->
+      <div class="splash-loader-wrap">
+        <div class="splash-loader-bar">
+          <div class="splash-loader-fill" id="splashLoaderFill"></div>
+        </div>
+        <div class="splash-status-text" id="splashStatusText">Initializing Neural Engine & Context Banks...</div>
+      </div>
+
+      <button class="splash-skip-btn" id="skipSplashBtn">Skip to Login &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STAGE 2: GRAND GLASSMORPHISM LOGIN GATEWAY
+       ========================================================================== -->
+  <div id="authGateway" class="auth-gateway-overlay hidden-initially">
+    <div class="auth-ambient-mesh">
+      <div class="mesh-orb orb-purple"></div>
+      <div class="mesh-orb orb-pink"></div>
+    </div>
+
+    <div class="auth-card grand-glass-card">
+      <div class="auth-logo-section">
+        <div class="auth-logo-glow"></div>
+        <div class="auth-logo-badge mini-glow">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <h2 class="auth-title">Welcome to <span class="gradient-text">Life Companion</span></h2>
+        <p class="auth-subtitle">Sign in to access your persistent memory, study schedules & health goals</p>
+      </div>
+
+      <div class="auth-form-wrap">
+        <div id="authAlertBanner" style="display:none;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:0.6rem 0.8rem;border-radius:var(--radius-md);margin-bottom:1rem;font-size:0.82rem;"></div>
+        
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab-btn active" id="tabLoginBtn">Student Sign In</button>
+          <button type="button" class="auth-tab-btn" id="tabRegisterBtn">Create Profile</button>
+          <button type="button" class="auth-tab-btn" id="tabForgotBtn">Reset Password</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label class="form-label">University / Student Email</label>
+            <div class="input-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <input type="email" id="loginEmail" class="input-field grand-input" placeholder="student@university.edu" required value="alex@alife.local">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="input-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="loginPassword" class="input-field grand-input" placeholder="••••••••" required value="Alex@12345">
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;margin-bottom:1.25rem;">
+            <label class="toggle-container" style="gap:0.4rem;">
+              <input type="checkbox" id="rememberMeCheckbox" checked>
+              <span class="toggle-slider" style="width:34px;height:20px;"></span>
+              <span class="toggle-text" style="font-size:0.8rem;">Remember session</span>
+            </label>
+            <a href="javascript:void(0)" id="linkForgotPassword" style="color:var(--primary);text-decoration:none;font-weight:700;">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg grand-btn" id="submitLoginBtn">
+            <span>Enter AI Companion Workspace</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <button type="button" class="btn btn-outline btn-block" id="demoSandboxBtn" style="margin-top:0.75rem;border-color:var(--primary);color:var(--primary);font-weight:700;display:flex;align-items:center;justify-content:center;gap:0.5rem;">
+            <span>🚀 1-Click Demo Sandbox (Alex Smith)</span>
+          </button>
+        </form>
+
+        <!-- Register / Profile Creation Form -->
+        <form id="registerForm" class="auth-form hidden">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="regName" class="input-field grand-input" placeholder="e.g. John Doe" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Student Email ID</label>
+            <input type="email" id="regEmail" class="input-field grand-input" placeholder="student@university.edu" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Major / Department</label>
+              <input type="text" id="regMajor" class="input-field grand-input" placeholder="Computer Science" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Year of Study</label>
+              <input type="text" id="regYear" class="input-field grand-input" placeholder="Year 2" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Create Security Password (min 6 chars)</label>
+            <input type="password" id="regPassword" class="input-field grand-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg grand-btn" id="submitRegisterBtn">Create Profile & Launch</button>
+        </form>
+
+        <!-- Forgot Password Form -->
+        <form id="forgotForm" class="auth-form hidden">
+          <div class="form-group">
+            <label class="form-label">Student Account Email</label>
+            <input type="email" id="forgotEmail" class="input-field grand-input" placeholder="student@university.edu" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg grand-btn" id="submitForgotBtn">Generate Reset Token</button>
+        </form>
+
+        <!-- Reset Password Form -->
+        <form id="resetForm" class="auth-form hidden">
+          <div class="form-group">
+            <label class="form-label">Password Reset Token</label>
+            <input type="text" id="resetTokenInput" class="input-field grand-input" placeholder="Enter token from above" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">New Password (min 6 characters)</label>
+            <input type="password" id="newPasswordInput" class="input-field grand-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg grand-btn" id="submitResetBtn">Update Password & Login</button>
+        </form>
+      </div>
+
+      <div class="auth-footer-note">
+        <span>Encrypted Local Storage &bull; 100% User-Managed Persistent Memory</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN APP CONTAINER
+       ========================================================================== -->
+  <div class="app-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-wrapper">
+          <div class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="brand-title">AILife<span class="gradient-text">Companion</span></span>
+            <span class="brand-badge" id="sidebarBrandBadge">Unified AI Assistant</span>
+          </div>
+        </div>
+        <button class="icon-btn mobile-toggle" id="sidebarCloseBtn" aria-label="Close sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Quick Module Status Pill Legend -->
+      <div class="team-pills">
+        <span class="team-pill m1" title="Education & Academic Assistant">3.3 Education</span>
+        <span class="team-pill m3" title="Health & Wellness Assistant">3.4 Health</span>
+        <span class="team-pill m2" title="Daily Tasks & Scheduling">3.5 Tasks</span>
+        <span class="team-pill m4 career" title="Career Development">3.6 Career</span>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-label" data-i18n="nav_main">CORE & OVERVIEW</div>
+        <button class="nav-item active" data-view="dashboard">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+          <span data-i18n="nav_dashboard">Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-view="memory">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span data-i18n="nav_memory">Personal Memory</span>
+          <span class="nav-subtag m1" id="memoryCountBadge">6 Active</span>
+        </button>
+
+        <div class="nav-section-label" data-i18n="nav_chat_edu">3.2 & 3.3 INTELLIGENT AI & EDUCATION</div>
+        <button class="nav-item" data-view="study-ai">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+          <span data-i18n="nav_ai_chat">Unified AI Chatbot</span>
+          <span class="nav-subtag m1">Voice & EN/Tamil</span>
+        </button>
+        <button class="nav-item" data-view="pdf-qa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span data-i18n="nav_notes">Notes & Document Q&A</span>
+        </button>
+        <button class="nav-item" data-view="study-plan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-i18n="nav_quizzes">Study Plan & Practice</span>
+        </button>
+
+        <div class="nav-section-label" data-i18n="nav_daily">3.5 SCHEDULE, TASKS & TIME MANAGEMENT</div>
+        <!-- NEW CORE MODULE: SCHEDULE & ALARMS -->
+        <button class="nav-item" data-view="schedule">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="nav_schedule">Schedule & Alarms</span>
+          <span class="nav-subtag m2" style="background:#dbeafe;color:#1d4ed8;">Alarms Active</span>
+        </button>
+        <button class="nav-item" data-view="tasks">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <span data-i18n="nav_tasks">Tasks & Priorities</span>
+          <span class="nav-subtag m2">M2</span>
+        </button>
+        <button class="nav-item" data-view="day-planner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span data-i18n="nav_day_planner">Plan My Day (Auto)</span>
+          <span class="nav-subtag m2">.ICS Sync</span>
+        </button>
+        <button class="nav-item" data-view="calendar-view">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="nav_calendar">Deadlines & Calendar</span>
+        </button>
+
+        <div class="nav-section-label" data-i18n="nav_wellness">3.4 HEALTH & WELLNESS</div>
+        <button class="nav-item" data-view="health-hub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span data-i18n="nav_health">Health Hub & Habits</span>
+          <span class="nav-subtag m3">M3</span>
+        </button>
+
+        <button class="nav-item" data-view="exercise">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 12h18"/><circle cx="5" cy="6.5" r="2"/><circle cx="19" cy="6.5" r="2"/><circle cx="5" cy="17.5" r="2"/><circle cx="19" cy="17.5" r="2"/></svg>
+          <span>Exercise &amp; Fitness</span>
+          <span class="nav-subtag m3">Workout</span>
+        </button>
+
+        <button class="nav-item" data-view="diet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Food &amp; Diet Planner</span>
+          <span class="nav-subtag" style="background:#dcfce7;color:#15803d;">Nutrition</span>
+        </button>
+
+        <button class="nav-item" data-view="yoga">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>
+          <span>Yoga &amp; Wellness</span>
+          <span class="nav-subtag" style="background:#f3e8ff;color:#7e22ce;">Breathing</span>
+        </button>
+
+        <div class="nav-section-label" data-i18n="nav_career">3.6 CAREER DEVELOPMENT</div>
+        <button class="nav-item" data-view="career">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span data-i18n="nav_career_item">Career & Mock Interview</span>
+          <span class="nav-subtag m4 career">Roadmap</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar User Footer -->
+      <div class="sidebar-user">
+        <div class="user-avatar" id="sidebarAvatar">AS</div>
+        <div class="user-details">
+          <div class="user-name" id="userNameLabel">Alex Smith</div>
+          <div class="user-role" id="userRoleLabel">Computer Science &bull; Y2</div>
+        </div>
+        <button class="icon-btn" id="openSettingsBtn" title="Settings & API Configuration" aria-label="Open Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button class="icon-btn" id="logoutBtn" title="Logout" aria-label="Logout" style="color:var(--accent-red);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="page-title-block">
+            <h1 class="page-title" id="pageTitle">Dashboard & Life Synergy</h1>
+            <p class="page-subtitle" id="pageSubtitle">AI Unified Life Companion &bull; Persistent Memory Active</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Language Toggle (English / Tamil) -->
+          <button class="lang-toggle-btn" id="langToggleBtn" title="Switch Language">
+            <span>&#127760;</span>
+            <span id="currentLangLabel">English</span>
+            <span class="lang-badge" id="langSwitchBadge">தமிழ்</span>
+          </button>
+
+          <!-- Context Inspector Quick Button -->
+          <button class="icon-btn" id="viewActiveContextBtn" title="Inspect Active Memory Context" aria-label="Inspect Active Context">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+
+          <!-- Streak Indicator -->
+          <div class="header-badge streak-badge" title="Active Study & Health Streak">
+            <span class="badge-icon">&#128293;</span>
+            <span class="badge-text"><strong id="streakCount">14</strong> Day Streak</span>
+          </div>
+
+          <!-- Quick Pomodoro Widget Status -->
+          <button class="header-badge pomodoro-badge" id="headerPomoBtn" title="Pomodoro Study-Break Timer">
+            <span class="badge-pulse"></span>
+            <span class="badge-icon">&#9201;</span>
+            <span id="headerPomoTime">25:00</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+            <svg id="themeIconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg id="themeIconMoon" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+
+          <!-- Notifications button -->
+          <!-- Voice Recognition Button -->
+          <button class="icon-btn voice-mic-btn" id="tamilVoiceBtn" title="Voice Input" aria-label="Voice Input">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+
+          <button class="icon-btn notif-btn" id="notifBellBtn" title="Notifications & Reminders" aria-label="Notifications">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ======================================================================
+           VIEW 1: DASHBOARD
+           ====================================================================== -->
+      <main class="content-area view-container active" id="view-dashboard">
+        <!-- Welcome Hero -->
+        <section class="dashboard-hero card">
+          <div class="hero-text-content">
+            <div class="hero-pill">
+              <span class="pulse-green"></span>
+              <span data-i18n="hero_status">System Operational &bull; Persistent Memory Active &bull; 4 Domains Synced</span>
+            </div>
+            <h2 class="hero-greeting"><span data-i18n="hero_greeting">Welcome back,</span> <span id="heroUserName">Alex</span>! 🎓</h2>
+            <p class="hero-quote" id="dailyQuote">"Continuous learning with balanced wellness creates unstoppable progress."</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="switchView('study-ai')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span data-i18n="hero_action_ask">Ask AI Assistant</span>
+              </button>
+              <button class="btn btn-secondary" onclick="switchView('schedule')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Schedule & Alarms</span>
+              </button>
+              <button class="btn btn-outline" onclick="switchView('memory')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span data-i18n="hero_action_mem">Manage Memory</span>
+              </button>
+            </div>
+          </div>
+          <div class="hero-badge-card">
+            <div class="wellness-score-circle">
+              <svg viewBox="0 0 36 36" class="circular-chart green">
+                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="circle" stroke-dasharray="88, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <text x="18" y="20.35" class="percentage" id="dashBalanceScore">88%</text>
+              </svg>
+            </div>
+            <div class="wellness-label">
+              <strong data-i18n="balance_score_title">Synergy Score</strong>
+              <span data-i18n="balance_score_sub">Study, Health & Career Aligned</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Context-Aware Recommendation Banner -->
+        <section class="rec-banner" id="recommendationBanner">
+          <div class="rec-banner-content">
+            <div class="rec-banner-icon">&#128161;</div>
+            <div>
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">
+                <strong>AI Context-Aware Recommendation</strong>
+                <span class="conflict-warning-badge" id="dashConflictBadge">Schedule Conflict Detected</span>
+              </div>
+              <p style="font-size:0.85rem;margin:0;" id="dashRecommendationText">
+                You have a Java OOP Lab submission tomorrow and stated a 7.5 hr sleep goal. We rescheduled non-urgent tasks to reserve a focused 45-min study block at 4:30 PM.
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-primary" onclick="switchView('schedule')">Review Schedule</button>
+        </section>
+
+        <!-- KPI Metrics Grid -->
+        <section class="kpi-grid">
+          <div class="kpi-card card clickable" onclick="switchView('study-ai')" title="Click to open AI Academic Study Assistant">
+            <div class="kpi-icon blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-title" data-i18n="kpi_study">Academic Mastery (3.3)</span>
+              <div class="kpi-val"><span id="kpiMastery">76</span>%</div>
+              <span class="kpi-caption">Java, DSA & DBMS on track</span>
+            </div>
+            <div class="kpi-progress-bar"><div class="kpi-progress-fill blue" style="width: 76%"></div></div>
+          </div>
+
+          <div class="kpi-card card clickable" onclick="switchView('tasks')" title="Click to manage Daily Tasks">
+            <div class="kpi-icon purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-title" data-i18n="kpi_tasks">Tasks Done Today (3.5)</span>
+              <div class="kpi-val"><span id="kpiTasksDone">3</span> / <span id="kpiTasksTotal">5</span></div>
+              <span class="kpi-caption">60% completed</span>
+            </div>
+            <div class="kpi-progress-bar"><div class="kpi-progress-fill purple" id="kpiTaskBar" style="width: 60%"></div></div>
+          </div>
+
+          <div class="kpi-card card clickable" onclick="switchView('diet')" title="Click to open Nutrition & Hydration Tracker">
+            <div class="kpi-icon cyan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-title" data-i18n="kpi_water">Water Target (3.4)</span>
+              <div class="kpi-val"><span id="kpiWater">1,750</span> <small>ml</small></div>
+              <span class="kpi-caption">Goal: <span id="kpiWaterGoal">2,500</span> ml (<span id="kpiWaterPercent">70%</span>)</span>
+            </div>
+            <div class="kpi-progress-bar"><div class="kpi-progress-fill cyan" id="kpiWaterBar" style="width: 70%"></div></div>
+          </div>
+
+          <div class="kpi-card card clickable" onclick="switchView('career')" title="Click to open 3.6 Career Development & Roadmaps">
+            <div class="kpi-icon amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-title" data-i18n="kpi_career">Career Goal: Java Backend (3.6)</span>
+              <div class="kpi-val">68% <small>Match</small></div>
+              <span class="kpi-caption">Milestone 3 of 5 active &bull; Click to open</span>
+            </div>
+            <div class="kpi-progress-bar"><div class="kpi-progress-fill amber" style="width: 68%"></div></div>
+          </div>
+        </section>
+
+        <!-- Dashboard Dual-Column Grid -->
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Today's Schedule & Alarms</h3>
+              <button class="btn btn-sm btn-outline" onclick="switchView('schedule')">Open Timetable</button>
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">09:00 - 10:30</div>
+                <div class="schedule-details">
+                  <strong>Advanced Data Structures Lecture</strong>
+                  <span>Hall B3 &bull; Prof. Harrison</span>
+                </div>
+                <span class="badge badge-success">Completed</span>
+              </div>
+              <div class="schedule-item active-now">
+                <div class="schedule-time">11:00 - 12:30</div>
+                <div class="schedule-details">
+                  <strong>Object Oriented Programming (Java)</strong>
+                  <span>Lab 204 &bull; Inheritance & Polymorphism</span>
+                </div>
+                <span class="badge badge-primary">Active Now</span>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">14:00 - 15:00</div>
+                <div class="schedule-details">
+                  <strong>AI Study Session: Practice OOP Doubts</strong>
+                  <span>Library Quiet Pod &bull; Alarm Enabled</span>
+                </div>
+                <span class="badge badge-warning">Alarm Active</span>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">16:30 - 17:15</div>
+                <div class="schedule-details">
+                  <strong>Hydration & Desk Posture Exercise</strong>
+                  <span>Wellness Break &bull; Relieve Eye Strain</span>
+                </div>
+                <span class="badge badge-info">Wellness</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="header-with-badge">
+                <h3 class="card-title">Persistent Memory Status</h3>
+                <span class="badge-tag">User Controlled</span>
+              </div>
+              <button class="btn btn-sm btn-primary" onclick="switchView('memory')">+ Add Memory</button>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">
+              The AI retains your background details so you never have to re-explain your skill level, deadlines, or health limits.
+            </p>
+            <div id="dashMemoryPreviewList" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+          </div>
+
+          <!-- 3.6 Career Development & Skills Bridge -->
+          <div class="card">
+            <div class="card-header">
+              <div class="header-with-badge">
+                <h3 class="card-title">3.6 Career Track & Skills</h3>
+                <span class="badge badge-warning">Target: Java Backend</span>
+              </div>
+              <button class="btn btn-sm btn-outline" onclick="switchView('career')">Open Roadmap</button>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">
+              Bridge your college coursework directly to job-ready engineering competencies.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
+                <span><strong>Active Goal:</strong> Jr Java / Spring Boot</span>
+                <span class="badge badge-success">68% Match</span>
+              </div>
+              <div class="kpi-progress-bar"><div class="kpi-progress-fill amber" style="width: 68%"></div></div>
+              <div style="font-size:0.8rem;color:var(--text-muted);display:flex;justify-content:space-between;">
+                <span>Next Milestone: Spring Data JPA</span>
+                <span>Milestone 3 of 5</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;margin-top:0.25rem;">
+                <button class="btn btn-sm btn-secondary" style="flex:1;" onclick="switchView('career')">🎯 Skill Gap Matrix</button>
+                <button class="btn btn-sm btn-primary" style="flex:1;" onclick="switchView('career')">🎙️ AI Mock Interview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           NEW CORE MODULE: SCHEDULE & TIME MANAGEMENT (view-schedule)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-schedule">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Schedule & Time Management Core</h2>
+              <p class="card-subtitle">Input your class timetable, generate an AI-tailored study plan, and set live audio alarms & session reminders.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+              <span class="alarm-live-badge pulsing" id="scheduleNextAlarmBadge">
+                Next Alarm: 11:00 AM (Java OOP)
+              </span>
+              <button class="btn btn-sm btn-outline" id="testAlarmBtn">Test Alarm Sound</button>
+              <button class="btn btn-sm btn-primary" id="exportScheduleIcsBtn" onclick="exportScheduleToIcs()" style="display:inline-flex;align-items:center;gap:0.35rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>Export (.ICS Calendar)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Schedule Sub-tabs -->
+          <div class="schedule-tabs-bar">
+            <button class="schedule-tab-btn active" id="schedTabTimetable">1. College / Class Timetable</button>
+            <button class="schedule-tab-btn" id="schedTabPlan">2. AI Study Plan Generator</button>
+            <button class="schedule-tab-btn" id="schedTabAlarms">3. Live Alarms & Alarm Settings</button>
+          </div>
+
+          <!-- SECTION 1: TIMETABLE INPUT -->
+          <div id="schedSectionTimetable">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem;">
+              <div>
+                <h4 style="margin:0;">Weekly Class / Timetable Input</h4>
+                <p style="font-size:0.8rem;color:var(--text-secondary);margin:0;">Enter your university/college lectures and labs to build your master schedule.</p>
+              </div>
+              <button class="btn btn-sm btn-secondary" id="loadPresetTimetableBtn">⚡ Load CS Timetable Preset</button>
+            </div>
+
+            <!-- Add Slot Form -->
+            <form id="addTimetableForm" style="background:var(--bg-subtle);padding:1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;border:1px solid var(--border-color);">
+              <h5 style="margin-bottom:0.75rem;color:var(--primary);">+ Add Class or Scheduled Session</h5>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Day of Week</label>
+                  <select id="slotDay" class="select-field">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Subject / Class Title</label>
+                  <input type="text" id="slotSubject" class="input-field" placeholder="e.g. Java OOP Lab or DSA Lecture" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Start Time</label>
+                  <input type="time" id="slotStartTime" class="input-field" required value="09:00">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">End Time</label>
+                  <input type="time" id="slotEndTime" class="input-field" required value="10:30">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Location / Room</label>
+                  <input type="text" id="slotRoom" class="input-field" placeholder="Lab 204 or Hall B">
+                </div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <label class="toggle-container">
+                  <input type="checkbox" id="slotAlarmToggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-text">Enable Audio Alarm for this slot</span>
+                </label>
+                <button type="submit" class="btn btn-primary">+ Add to Timetable</button>
+              </div>
+            </form>
+
+            <!-- Timetable List Display -->
+            <div id="timetableListContainer">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- SECTION 2: AI STUDY PLAN GENERATOR -->
+          <div id="schedSectionPlan" class="hidden">
+            <div style="background:var(--bg-subtle);padding:1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;border:1px solid var(--border-color);">
+              <h4 style="color:var(--primary);margin-bottom:0.4rem;">AI Personalized Study Plan Generator</h4>
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem;">
+                The AI inspects your class timetable, detects free gaps between lectures, and automatically creates an optimized daily study schedule tailored to your weak topics (Java OOP, DSA) and health boundaries.
+              </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Target Daily Study Time</label>
+                  <select id="planHoursSelect" class="select-field">
+                    <option value="2">2 Hours / Day (Light Revision)</option>
+                    <option value="3" selected>3 Hours / Day (Optimal Balanced)</option>
+                    <option value="4">4.5 Hours / Day (Exam Sprint Mode)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Session Style</label>
+                  <select id="planStyleSelect" class="select-field">
+                    <option value="pomodoro">25m Focus + 5m Rest (Pomodoro)</option>
+                    <option value="deepwork">45m Deep Work + 15m Break</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" id="generatePlanBtn">⚡ Generate Optimized AI Study Schedule</button>
+            </div>
+
+            <!-- Generated Plan Result -->
+            <div id="aiGeneratedPlanContainer">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- SECTION 3: LIVE ALARMS & ALARM SETTINGS -->
+          <div id="schedSectionAlarms" class="hidden">
+            <div style="background:var(--bg-subtle);padding:1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;border:1px solid var(--border-color);">
+              <h4 style="margin-bottom:0.75rem;">Alarm & Reminder Sound Settings</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Alarm Tone Synthesizer</label>
+                  <select id="alarmToneSelect" class="select-field">
+                    <option value="chime">Melodic Gentle Chime (Recommended)</option>
+                    <option value="beep">Digital High Alert Beep</option>
+                    <option value="gong">Resonant Temple Gong</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Remind Me</label>
+                  <select id="alarmTimingSelect" class="select-field">
+                    <option value="exact">At exact session start time</option>
+                    <option value="5min">5 minutes before session starts</option>
+                    <option value="10min">10 minutes before session starts</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+                <label class="toggle-container">
+                  <input type="checkbox" id="globalAlarmToggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-text"><strong>Master Audio Alarms Enabled</strong></span>
+                </label>
+                <div style="display:flex;gap:0.5rem;">
+                  <button class="btn btn-sm btn-outline" id="requestNotifBtn">Enable Phone Notifications</button>
+                  <button class="btn btn-sm btn-primary" id="testAlarmNowBtn">Play Alarm Audio</button>
+                </div>
+              </div>
+            </div>
+
+            <h4 style="margin-bottom:0.75rem;">Upcoming Active Alarms Queue</h4>
+            <div id="activeAlarmsQueueList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           NEW: EXERCISE & WELLNESS CORE (view-exercise)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-exercise">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">🏋️ Personalized Fitness &amp; Workout Suite</h2>
+              <p class="card-subtitle">AI-tailored home &amp; gym workouts, interactive live runner, complete 36-exercise library, and recovery habit tracking.</p>
+            </div>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <button class="btn btn-primary" id="generateAiWorkoutBtn">⚡ Generate AI Workout Plan</button>
+              <button class="btn btn-outline" id="addExerciseAlarmBtn">+ Add Custom Activity</button>
+            </div>
+          </div>
+
+          <!-- Fitness Sub-tabs Navigation -->
+          <div class="fitness-tabs-bar">
+            <button class="fitness-tab-btn active" id="fitTabToday">🏋️ 1. Today's Workout &amp; Runner</button>
+            <button class="fitness-tab-btn" id="fitTabSchedule">📅 2. Weekly Workout Schedule</button>
+            <button class="fitness-tab-btn" id="fitTabLibrary">📖 3. Complete Exercise Library</button>
+            <button class="fitness-tab-btn" id="fitTabProfile">👤 4. My Fitness Profile</button>
+            <button class="fitness-tab-btn" id="fitTabHistory">📊 5. Workout Logs &amp; Progress</button>
+            <button class="fitness-tab-btn" id="fitTabAlarms">⏰ 6. Alarms &amp; Habit Reminders</button>
+          </div>
+
+          <!-- SECTION 1: TODAY'S WORKOUT & LIVE RUNNER -->
+          <div id="fitSectionToday">
+            <div class="workout-runner-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+                <div>
+                  <span class="badge badge-primary" id="runnerDayBadge">Today's Focus: Upper Body Press &amp; Core</span>
+                  <h3 style="margin-top:0.35rem;" id="runnerWorkoutTitle">Student Synergy Full-Body &amp; Mobility</h3>
+                </div>
+                <div style="display:flex;gap:0.5rem;align-items:center;">
+                  <button class="btn btn-primary" id="startWorkoutBtn">▶ Start Workout</button>
+                  <button class="btn btn-outline hidden" id="pauseWorkoutBtn">⏸ Pause</button>
+                  <button class="btn btn-outline hidden" id="resumeWorkoutBtn">▶ Resume</button>
+                  <button class="btn btn-secondary hidden" id="finishWorkoutBtn">✓ Finish Workout</button>
+                </div>
+              </div>
+
+              <!-- Live Timers -->
+              <div class="timer-box">
+                <div style="text-align:center;">
+                  <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;">Workout Timer</div>
+                  <div class="timer-digits" id="workoutTimerDisplay">00:00</div>
+                </div>
+                <div style="width:1px;height:50px;background:var(--border-color);"></div>
+                <div style="text-align:center;">
+                  <div style="font-size:0.75rem;font-weight:700;color:var(--accent-amber);text-transform:uppercase;">Rest Interval</div>
+                  <div class="rest-timer-digits" id="restTimerDisplay">00:45</div>
+                  <button class="btn btn-xs btn-outline" id="startRestTimerBtn" style="margin-top:0.25rem;">Start 45s Rest</button>
+                </div>
+              </div>
+
+              <!-- Exercise Set-by-Set Logging Table -->
+              <h4 style="margin:1rem 0 0.5rem 0;">Exercise Checklist &amp; Sets Tracker</h4>
+              <div style="overflow-x:auto;">
+                <table class="set-tracker-table" id="todayExerciseTable">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Exercise</th>
+                      <th>Target Sets &amp; Reps</th>
+                      <th>Rest</th>
+                      <th>Feedback on Difficulty</th>
+                    </tr>
+                  </thead>
+                  <tbody id="todayExerciseBody">
+                    <!-- Populated dynamically by JS -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- End of Session Survey (Visible on Finish) -->
+              <div id="sessionFeedbackBox" class="hidden" style="margin-top:1.5rem;padding:1.25rem;background:var(--bg-card);border-radius:var(--radius-md);border:1px solid var(--border-color);">
+                <h4 style="color:var(--primary);margin-bottom:0.75rem;">Log Workout Experience &amp; Soreness Feedback</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Perceived Effort (RPE 1-10): <span id="rpeVal">7</span></label>
+                    <input type="range" id="rpeSlider" min="1" max="10" value="7" class="input-field" oninput="document.getElementById('rpeVal').innerText=this.value">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Energy Level</label>
+                    <select id="sessionEnergy" class="select-field">
+                      <option value="moderate" selected>Moderate — Steady pace</option>
+                      <option value="high">High — Felt strong and energized</option>
+                      <option value="low">Low — Completed with focus</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Soreness / Joint Comfort Feedback</label>
+                  <input type="text" id="sessionSoreness" class="input-field" placeholder="e.g. Felt good chest pump, zero shoulder pinch, mild quad fatigue">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Personal Notes / PRs</label>
+                  <input type="text" id="sessionNotes" class="input-field" placeholder="e.g. Added 2 reps on Incline Push-Ups, plank held 40 seconds">
+                </div>
+                <button class="btn btn-primary" id="saveSessionLogBtn">Save Workout to Database</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: WEEKLY WORKOUT SCHEDULE -->
+          <div id="fitSectionSchedule" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.75rem;">
+              <div>
+                <h4 style="margin:0;">Weekly Workout Distribution</h4>
+                <p style="font-size:0.8rem;color:var(--text-secondary);margin:0;">Personalized 4-day student split: Push, Pull, Legs, Recovery &amp; Mobility.</p>
+              </div>
+              <button class="btn btn-sm btn-primary" id="recalcWorkoutBtn">↻ Recalculate with AI</button>
+            </div>
+            <div class="exercise-grid" id="weeklyScheduleGrid">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- SECTION 3: COMPLETE EXERCISE LIBRARY -->
+          <div id="fitSectionLibrary" class="hidden">
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;align-items:center;">
+              <button class="btn btn-sm btn-primary ex-filter-btn active" data-muscle="all">All Muscles (36)</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="chest">Chest</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="back">Back</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="shoulders">Shoulders</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="arms">Arms</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="legs">Legs</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="core">Core</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="cardio">Cardio</button>
+              <button class="btn btn-sm btn-outline ex-filter-btn" data-muscle="recovery">Recovery</button>
+            </div>
+            <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+              <input type="text" id="exSearchInput" class="input-field" placeholder="Search by exercise name or technique..." style="flex:1;min-width:240px;">
+              <select id="exDifficultySelect" class="select-field" style="max-width:200px;">
+                <option value="all">All Difficulties</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            <div class="exercise-library-grid" id="exerciseLibraryCardsGrid">
+              <!-- Rendered dynamically from MySQL -->
+            </div>
+          </div>
+
+          <!-- SECTION 4: MY FITNESS PROFILE -->
+          <div id="fitSectionProfile" class="hidden">
+            <div style="max-width:800px;background:var(--bg-card);padding:1.5rem;border-radius:var(--radius-lg);border:1px solid var(--border-color);">
+              <h3 style="margin-bottom:0.25rem;">Personalized Fitness Profile Questionnaire</h3>
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem;">Your answers directly tailor exercise variations, rest intervals, and weekly training volume.</p>
+              <form id="fitnessProfileForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Age</label>
+                    <input type="number" id="fitAge" class="input-field" value="20" min="14" max="80">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Fitness Experience Level</label>
+                    <select id="fitExperience" class="select-field">
+                      <option value="beginner" selected>Beginner (Learning form, building foundation)</option>
+                      <option value="intermediate">Intermediate (Consistent training for 6+ months)</option>
+                      <option value="advanced">Advanced (Experienced lifter / calisthenics practitioner)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Primary Fitness Goal</label>
+                    <input type="text" id="fitGoal" class="input-field" value="Build functional strength, relieve student desk stiffness, increase stamina">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Available Equipment</label>
+                    <input type="text" id="fitEquipment" class="input-field" value="Bodyweight, Sturdy Desk/Chair, Resistance Bands">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Workout Location</label>
+                    <select id="fitLocation" class="select-field">
+                      <option value="home" selected>Home / Dorm Room</option>
+                      <option value="gym">Gym / Fitness Center</option>
+                      <option value="outdoors">Outdoors / Campus Park</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Available Minutes Per Day</label>
+                    <input type="number" id="fitMinutes" class="input-field" value="30" min="15" max="120">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Days Per Week</label>
+                    <input type="number" id="fitDays" class="input-field" value="4" min="2" max="7">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Physical Limitations / Injury History (Optional)</label>
+                  <textarea id="fitLimitations" class="input-field" rows="2" placeholder="e.g. Mild lower back stiffness after 3 hours studying; no knee pain.">Desk-slouch posture, mild lower back stiffness after 3 hours sitting, no acute injuries.</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">Save Fitness Profile to Database</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- SECTION 5: WORKOUT LOGS & PROGRESS -->
+          <div id="fitSectionHistory" class="hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+              <h4>Completed Workout Sessions History</h4>
+              <span class="badge badge-success" id="totalSessionsBadge">2 Sessions Logged</span>
+            </div>
+            <div id="workoutHistoryList" style="display:flex;flex-direction:column;gap:1rem;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- SECTION 6: ALARMS & HABIT REMINDERS -->
+          <div id="fitSectionAlarms" class="hidden">
+            <div style="background:var(--bg-subtle);padding:1rem 1.25rem;border-radius:var(--radius-md);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+              <label class="toggle-container">
+                <input type="checkbox" id="exerciseGlobalAlarm" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-text"><strong>Global Exercise Alarms ON</strong></span>
+              </label>
+              <select id="exerciseToneSelect" class="select-field" style="max-width:220px;">
+                <option value="chime">Gentle Chime</option>
+                <option value="beep">Alert Beep</option>
+                <option value="gong">Temple Gong</option>
+              </select>
+              <button class="btn btn-sm btn-outline" id="testExerciseAlarmBtn">▶ Test Alarm Sound</button>
+            </div>
+
+            <!-- Existing Exercise Reminder Activity Cards -->
+            <div class="exercise-grid" id="exerciseGrid">
+              <!-- Rendered by JS -->
+            </div>
+
+            <!-- Custom Exercise Form -->
+            <div id="addExerciseForm" class="hidden" style="padding:1.25rem;background:var(--bg-subtle);border-radius:var(--radius-md);margin-top:1.25rem;border:1px solid var(--border-color);">
+              <h5 style="color:var(--primary);margin-bottom:0.75rem;">+ Add Custom Exercise / Wellness Activity</h5>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Activity Name</label>
+                  <input type="text" id="exName" class="input-field" placeholder="e.g. Yoga, Walking, Push-ups">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Duration (minutes)</label>
+                  <input type="number" id="exDuration" class="input-field" value="20" min="5" max="120">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Alarm Time</label>
+                  <input type="time" id="exAlarmTime" class="input-field" value="07:00">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Days</label>
+                  <select id="exDays" class="select-field" multiple>
+                    <option value="Mon" selected>Monday</option>
+                    <option value="Tue" selected>Tuesday</option>
+                    <option value="Wed" selected>Wednesday</option>
+                    <option value="Thu" selected>Thursday</option>
+                    <option value="Fri" selected>Friday</option>
+                    <option value="Sat">Saturday</option>
+                    <option value="Sun">Sunday</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+                <button class="btn btn-primary" id="saveExerciseBtn">Save Activity</button>
+                <button class="btn btn-outline" id="cancelExerciseBtn">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 2: PERSISTENT PERSONAL MEMORY CENTER (3.1)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-memory">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Persistent Personal Memory Engine</h2>
+              <p class="card-subtitle">User-managed personal context repository. You have 100% control over what the assistant remembers.</p>
+            </div>
+            <button class="btn btn-primary" id="openAddMemoryModalBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add New Memory
+            </button>
+          </div>
+
+          <!-- Memory Controls & Privacy Status -->
+          <div class="memory-controls-bar">
+            <div class="memory-privacy-status">
+              <span class="privacy-indicator-dot" id="privacyStatusDot"></span>
+              <div>
+                <strong>Memory Injection Status: <span id="memoryStatusText" style="color:var(--accent-green);">ACTIVE</span></strong>
+                <p style="font-size:0.75rem;color:var(--text-muted);margin:0;">Relevant details are dynamically supplied to prompt reasoning.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-outline" id="toggleMemoryModeBtn">Toggle Memory Pause (Incognito)</button>
+              <button class="btn btn-sm btn-outline" id="exportMemoryBtn">Export JSON</button>
+              <button class="btn btn-sm btn-outline" id="clearAllMemoryBtn" style="color:var(--accent-red);border-color:rgba(239,68,68,0.3);">Wipe All Memories</button>
+            </div>
+          </div>
+
+          <div class="injected-context-box">
+            <strong>Context Retrieval Engine Simulator:</strong>
+            <p style="margin:0.25rem 0 0.5rem 0;">Type a query to see what personal memories are retrieved in real-time:</p>
+            <div style="display:flex;gap:0.5rem;">
+              <input type="text" id="memorySimQueryInput" class="input-field" placeholder="e.g., 'Explain Java inheritance' or 'Plan my lunch'..." value="Explain Java inheritance">
+              <button class="btn btn-sm btn-primary" id="testRetrievalBtn">Simulate Retrieval</button>
+            </div>
+            <div id="retrievalSimResult" style="margin-top:0.6rem;font-size:0.8rem;color:var(--text-primary);"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <button class="btn btn-sm btn-primary filter-mem-btn active" data-cat="all">All Memories (<span id="countMemAll">6</span>)</button>
+          <button class="btn btn-sm btn-outline filter-mem-btn" data-cat="learning">Academic & Learning (<span id="countMemLearning">2</span>)</button>
+          <button class="btn btn-sm btn-outline filter-mem-btn" data-cat="tasks">Tasks & Routine (<span id="countMemTasks">2</span>)</button>
+          <button class="btn btn-sm btn-outline filter-mem-btn" data-cat="health">Health & Wellness (<span id="countMemHealth">1</span>)</button>
+          <button class="btn btn-sm btn-outline filter-mem-btn" data-cat="career">Career Goals (<span id="countMemCareer">1</span>)</button>
+        </div>
+
+        <div class="memory-grid" id="memoryCardsGrid"></div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 3: INTELLIGENT CHATBOT & EDUCATION ASSISTANT (3.2 & 3.3)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-study-ai">
+        <div class="chat-layout-grid">
+          <div class="card chat-container">
+            <div class="chat-header">
+              <div class="chat-bot-info">
+                <div class="bot-avatar-wrap">
+                  <div class="bot-avatar">AI</div>
+                  <span class="status-indicator online"></span>
+                </div>
+                <div>
+                  <h3 class="bot-name">AILife Intelligent Companion</h3>
+                  <div style="display:flex;align-items:center;gap:0.4rem;">
+                    <span class="bot-status" id="chatEngineLabel">Context-Aware Persistent Reasoning</span>
+                    <span class="intent-badge education" id="activeIntentBadge">Intent: Education</span>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-header-actions">
+                <button class="btn btn-sm btn-primary" id="openAiKeyModalBtn" style="gap:0.35rem;display:flex;align-items:center;background:linear-gradient(135deg, #10b981, #059669);border-color:#10b981;">
+                  ✨ <span id="chatApiStatusLabel">Real AI: Inbuilt &amp; Active</span>
+                </button>
+                <button class="btn btn-sm btn-ghost" id="chatTtsToggleBtn" title="Toggle AI Voice Response Readout">
+                  Voice Out: <span id="ttsStateText">ON</span>
+                </button>
+                <button class="btn btn-sm btn-outline" id="clearChatBtn" title="Clear Conversation">Clear Chat</button>
+              </div>
+            </div>
+
+            <div style="padding:0.5rem 1.25rem;background:var(--bg-subtle);border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+              <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.75rem;color:var(--text-secondary);">
+                <span><strong>Injected Context:</strong></span>
+                <span class="memory-retrieval-pill" id="chatInjectedPill">Java Level: Beginner &bull; Practical Examples &bull; CS Y2</span>
+              </div>
+              <button class="btn btn-xs btn-ghost" onclick="switchView('memory')" style="font-size:0.7rem;">Edit Memory</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+              <div class="message message-bot">
+                <div class="msg-avatar">AI</div>
+                <div class="msg-bubble">
+                  <div class="reasoning-badge-wrap">
+                    <span class="intent-badge general">General Assistant</span>
+                    <span class="memory-retrieval-pill">Profile: Alex Smith (Computer Science)</span>
+                  </div>
+                  <p>Hello! I am your <strong>AI Unified Life Companion</strong>.</p>
+                  <p>I remember your current learning level (<strong>Java Beginner</strong>), your exam dates, daily tasks, and hydration goals so you don't need to re-explain yourself.</p>
+                  <p>How can I assist you today? You can type in English or Tamil, or click the microphone to speak!</p>
+                  <div style="margin-top:0.5rem;">
+                    <button class="tts-play-btn" onclick="speakText(this.parentElement.parentElement.innerText)">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                      Listen
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <div class="prompt-chips">
+                <button class="chip" data-prompt="Explain Java inheritance with a simple beginner-friendly program.">
+                  Explain Java Inheritance
+                </button>
+                <button class="chip" data-prompt="Plan my day based on my saved tasks and deadlines.">
+                  Plan My Day
+                </button>
+                <button class="chip" data-prompt="Suggest a career roadmap to become a Java Backend Engineer.">
+                  Java Backend Roadmap
+                </button>
+                <button class="chip" data-prompt="ஜாவா Inheritance பற்றி தமிழில் எளிய எடுத்துக்காட்டுடன் விளக்குங்கள்.">
+                  ஜாவா விளக்கம் (Tamil)
+                </button>
+                <button class="chip" data-prompt="What should I eat and how much water to drink during a 4-hour study session?">
+                  Study Nutrition & Water
+                </button>
+              </div>
+
+              <form class="chat-form" id="chatForm">
+                <button type="button" class="voice-mic-btn" id="voiceMicBtn" title="Speak via Microphone">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="22"/>
+                  </svg>
+                </button>
+                <textarea id="chatInput" class="chat-textarea" placeholder="Ask anything across Education, Tasks, Health, or Career... (or speak into mic)" rows="1"></textarea>
+                <button type="submit" class="btn btn-primary chat-send-btn" id="sendBtn" aria-label="Send message">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </form>
+              <div style="display:flex;justify-content:space-between;padding:0.25rem 0.5rem;font-size:0.7rem;color:var(--text-muted);">
+                <span>Press Enter to send, Shift+Enter for new line</span>
+                <span id="speechStatusHint">Microphone ready</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-sidebar-cards">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Retrieved Personal Context</h4>
+                <span class="badge-tag">Transparency</span>
+              </div>
+              <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+                Every answer adapts automatically using these saved profile parameters:
+              </p>
+              <ul style="font-size:0.8rem;padding-left:1.2rem;color:var(--text-primary);display:flex;flex-direction:column;gap:0.4rem;">
+                <li><strong>Programming Level:</strong> Beginner (Java)</li>
+                <li><strong>Explanation Style:</strong> Visual analogies & runnable code</li>
+                <li><strong>Current Exam:</strong> Object Oriented Java (Nov 15)</li>
+                <li><strong>Target Career:</strong> Junior Backend Developer</li>
+              </ul>
+              <button class="btn btn-xs btn-outline mt-3 w-100" onclick="switchView('memory')">Update Preferences</button>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Practice Doubt Generator</h4>
+                <span class="badge badge-success">3.3 Edu</span>
+              </div>
+              <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+                Generate customized quiz questions matched to your current learning weaknesses:
+              </p>
+              <button class="btn btn-sm btn-primary w-100 mb-2" id="genJavaPracticeBtn">Generate Java OOP Question</button>
+              <button class="btn btn-sm btn-outline w-100" id="genDsaPracticeBtn">Generate DSA Question</button>
+              <div id="quickPracticeResult" style="margin-top:0.75rem;"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 4: NOTES & PDF Q&A (3.3 - In-Browser PDF Reader & Grounded RAG)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-pdf-qa">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">📄 Lecture Notes, PDF Reader & Grounded RAG</h2>
+              <p class="card-subtitle">Upload lecture slides (PDF/TXT), extract text page-by-page, generate tailored summaries, and ask grounded questions with exact page citations.</p>
+            </div>
+            <span class="badge badge-primary">RAG & PDF.js Active</span>
+          </div>
+        </div>
+
+        <div class="pdf-workspace-grid">
+          <!-- Left Column: Document Upload & Reader -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Document Input & PDF Reader</h3>
+              <div style="display:flex;gap:0.5rem;align-items:center;">
+                <input type="file" id="noteFileInput" accept=".pdf,.txt,.md,.json,.csv" style="display:none;">
+                <button type="button" class="btn btn-xs btn-primary" id="uploadNoteFileBtn">📁 Upload PDF / Notes</button>
+                <span class="badge badge-info" id="docStatusBadge">Ready</span>
+              </div>
+            </div>
+
+            <!-- Drag & Drop Zone -->
+            <div id="pdfDropZone" class="drop-zone" style="border:2px dashed var(--border-color);border-radius:var(--radius-md);padding:1.5rem;text-align:center;background:var(--bg-subtle);margin-bottom:1rem;cursor:pointer;transition:border-color 0.2s;">
+              <div style="font-size:2rem;margin-bottom:0.25rem;">📑</div>
+              <strong style="color:var(--text-primary);font-size:0.92rem;">Drag & drop your course PDF or notes here</strong>
+              <p style="font-size:0.8rem;color:var(--text-muted);margin:0.25rem 0 0 0;">Supports PDF (multi-page text extraction), TXT, and Markdown</p>
+            </div>
+
+            <div class="form-row" style="margin-bottom:0.75rem;">
+              <div class="form-group" style="flex:2;">
+                <label class="form-label" style="font-size:0.75rem;">Document / Note Title</label>
+                <input type="text" id="noteTitleInput" class="input-field" placeholder="e.g. CS302 Lecture 4: Inheritance & Polymorphism">
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label class="form-label" style="font-size:0.75rem;">Subject</label>
+                <select id="noteSubjectSelect" class="select-field">
+                  <option value="Java OOP">Java OOP</option>
+                  <option value="Data Structures">Data Structures</option>
+                  <option value="DBMS">DBMS</option>
+                  <option value="Networks">Networks</option>
+                  <option value="Operating Systems">Operating Systems</option>
+                  <option value="General">General</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Length & Format Options -->
+            <div class="form-row" style="margin-bottom:0.75rem;background:var(--bg-card);padding:0.6rem 0.8rem;border-radius:var(--radius-md);border:1px solid var(--border-color);">
+              <div class="form-group" style="flex:1;">
+                <label class="form-label" style="font-size:0.75rem;">Summary Depth</label>
+                <select id="summaryLengthSelect" class="select-field" style="font-size:0.82rem;padding:0.35rem 0.5rem;">
+                  <option value="short">Short (Under 150 words)</option>
+                  <option value="medium" selected>Balanced Summary (250-350 words)</option>
+                  <option value="detailed">In-Depth Academic (500+ words)</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label class="form-label" style="font-size:0.75rem;">Output Format</label>
+                <select id="summaryFormatSelect" class="select-field" style="font-size:0.82rem;padding:0.35rem 0.5rem;">
+                  <option value="structured" selected>Structured Notes & Definitions</option>
+                  <option value="exam_points">Exam Questions with Model Answers</option>
+                  <option value="bullet">Scannable Bullet Points</option>
+                  <option value="simple">Plain-Language Analogies</option>
+                </select>
+              </div>
+            </div>
+
+            <textarea id="notesInput" class="chat-textarea" rows="9" placeholder="Extracted text from your uploaded PDF will appear here. You can also paste lecture notes directly..."></textarea>
+            
+            <div style="display:flex;gap:0.5rem;margin-top:0.85rem;flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="summarizeNotesBtn">✨ Summarize with AI</button>
+              <button class="btn btn-secondary btn-sm" id="extractExamPointsBtn">🎯 Extract Exam Questions</button>
+              <button class="btn btn-success btn-sm" id="saveNoteBtn" style="background:#10b981;color:#fff;">💾 Save to Library</button>
+              <button class="btn btn-outline btn-sm" id="downloadNotesBtn">📥 Download (.MD)</button>
+              <button class="btn btn-outline btn-sm" id="loadSampleNotesBtn">Load Sample Java Notes</button>
+            </div>
+          </div>
+
+          <!-- Right Column: Document Insights & Grounded RAG Q&A -->
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <!-- Grounded RAG Q&A Console -->
+            <div class="card" style="border:1px solid rgba(99,102,241,0.3);">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title" style="font-size:0.95rem;">🔍 Ask Document (Grounded RAG)</h3>
+                  <p class="card-subtitle" style="font-size:0.75rem;">Query this document strictly based on uploaded content with page citations.</p>
+                </div>
+                <span class="badge badge-primary">Semantic RAG</span>
+              </div>
+              <div style="display:flex;gap:0.4rem;margin-bottom:0.75rem;">
+                <input type="text" id="ragQueryInput" class="input-field" placeholder="e.g. What is the difference between abstract classes and interfaces?" style="font-size:0.82rem;">
+                <button type="button" class="btn btn-primary btn-sm" id="askRagBtn">Ask</button>
+              </div>
+              <div id="ragQueryResult" style="background:var(--bg-subtle);border-radius:var(--radius-md);padding:0.75rem;min-height:90px;font-size:0.84rem;color:var(--text-primary);line-height:1.5;">
+                <span style="color:var(--text-muted);font-style:italic;">Ask any question about your uploaded document. The answer will be grounded on verified lecture text.</span>
+              </div>
+              <div id="ragCitationsContainer" style="margin-top:0.5rem;display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+            </div>
+
+            <!-- AI Summary & Notes Output -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" style="font-size:0.95rem;">AI Document Insights & Notes</h3>
+                <span class="badge badge-success" id="notesStatusBadge">Ready</span>
+              </div>
+              <div id="notesAnalysisResult" style="min-height:140px;font-size:0.88rem;color:var(--text-primary);line-height:1.6;max-height:300px;overflow-y:auto;">
+                <p style="color:var(--text-muted);font-style:italic;">
+                  Click "Summarize with AI" or "Extract Exam Questions". The generated breakdown will appear here formatted with markdown and code blocks.
+                </p>
+              </div>
+            </div>
+
+            <!-- Saved Notes & Indexed Documents Library -->
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title" style="font-size:0.95rem;">📚 Saved Notes & Documents</h4>
+                <span class="badge badge-primary" id="savedNotesCountBadge">0 Notes</span>
+              </div>
+              <div style="margin-bottom:0.75rem;">
+                <input type="text" id="notesSearchInput" class="input-field" placeholder="🔍 Search saved notes by keyword..." style="font-size:0.8rem;padding:0.4rem 0.6rem;">
+              </div>
+              <div id="savedNotesListContainer" style="display:flex;flex-direction:column;gap:0.6rem;max-height:220px;overflow-y:auto;">
+                <p style="font-size:0.8rem;color:var(--text-muted);font-style:italic;">No saved notes yet. Upload a document or click 'Save to Library'.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 5: STUDY PLAN & PROGRESS (3.3)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-study-plan">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">📖 Personalized Study & Exam Revision Planner</h2>
+              <p class="card-subtitle">Generate an AI-tailored daily study breakdown based on your syllabus, upcoming exam dates, and daily available hours.</p>
+            </div>
+            <span class="badge badge-primary">3.3 Exam Planner</span>
+          </div>
+
+          <!-- Study Plan Generator Form -->
+          <form id="studyPlanGeneratorForm" style="background:var(--bg-subtle);padding:1.25rem;border-radius:var(--radius-md);margin-top:0.75rem;border:1px solid var(--border-color);">
+            <div class="form-row">
+              <div class="form-group" style="flex:2;">
+                <label class="form-label">Subject / Course Name</label>
+                <input type="text" id="studyPlanSubject" class="input-field" placeholder="e.g. Object-Oriented Programming (Java)" value="Object-Oriented Programming (Java)" required>
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label class="form-label">Target Exam Date</label>
+                <input type="date" id="studyPlanExamDate" class="input-field" value="2026-11-15" required>
+              </div>
+              <div class="form-group" style="flex:1;">
+                <label class="form-label">Daily Available Study Hours</label>
+                <input type="number" id="studyPlanDailyHours" class="input-field" min="0.5" max="12" step="0.5" value="2.5" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Syllabus Portions / Weak Topics to Cover</label>
+              <input type="text" id="studyPlanTopics" class="input-field" placeholder="e.g. Classes, Inheritance, Polymorphism, Interfaces, Exception Handling" value="Classes, Inheritance, Polymorphism, Interfaces, Exception Handling">
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+              <span style="font-size:0.8rem;color:var(--text-secondary);">Calculates days remaining, partitions syllabus, and creates daily milestone checklist.</span>
+              <button type="submit" class="btn btn-primary" id="btnGenStudyPlan">⚡ Generate AI Revision Plan</button>
+            </div>
+          </form>
+
+          <!-- Generated Plan Output Container -->
+          <div id="activeStudyPlanContainer" style="margin-top:1.25rem;"></div>
+        </div>
+
+        <div class="study-plan-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Subject Mastery & Learning Progress</h3>
+              <span class="badge-tag">Semester 3</span>
+            </div>
+            <div class="subject-progress-list" style="display:flex;flex-direction:column;gap:1.25rem;margin-top:1rem;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:700;margin-bottom:0.35rem;">
+                  <span>Object-Oriented Programming (Java)</span>
+                  <span style="color:var(--m1-color);">82%</span>
+                </div>
+                <div class="kpi-progress-bar"><div class="kpi-progress-fill blue" style="width: 82%"></div></div>
+                <span style="font-size:0.75rem;color:var(--text-muted);">Mastered: Classes, Objects, Inheritance &bull; In Progress: Interfaces</span>
+              </div>
+
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:700;margin-bottom:0.35rem;">
+                  <span>Data Structures & Algorithms</span>
+                  <span style="color:var(--m2-color);">68%</span>
+                </div>
+                <div class="kpi-progress-bar"><div class="kpi-progress-fill purple" style="width: 68%"></div></div>
+                <span style="font-size:0.75rem;color:var(--text-muted);">Mastered: Arrays, Linked Lists &bull; In Progress: Binary Trees</span>
+              </div>
+
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:700;margin-bottom:0.35rem;">
+                  <span>Database Management Systems (SQL)</span>
+                  <span style="color:var(--m3-color);">75%</span>
+                </div>
+                <div class="kpi-progress-bar"><div class="kpi-progress-fill green" style="width: 75%"></div></div>
+                <span style="font-size:0.75rem;color:var(--text-muted);">Mastered: SQL Joins, ER Modeling &bull; In Progress: Normalization 3NF</span>
+              </div>
+
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:700;margin-bottom:0.35rem;">
+                  <span>Computer Networks</span>
+                  <span style="color:var(--accent-amber);">55%</span>
+                </div>
+                <div class="kpi-progress-bar"><div class="kpi-progress-fill amber" style="width: 55%"></div></div>
+                <span style="font-size:0.75rem;color:var(--text-muted);">Needs practice: TCP/IP Layer Handshakes</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Interactive Concept Verification Quiz</h3>
+              <span class="badge badge-primary" id="quizScoreBadge">Score: 0/0</span>
+            </div>
+            <div id="interactiveQuizContainer" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 6: TASKS & PRIORITIES (3.5)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-tasks">
+        <div class="tasks-view-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Add New Task or Assignment</h3>
+              <span class="badge-tag">Smart Priority</span>
+            </div>
+            <form id="newTaskForm">
+              <div class="form-group">
+                <label class="form-label">Task Title / Description</label>
+                <input type="text" id="taskTitleInput" class="input-field" placeholder="e.g. Implement Vehicle hierarchy in Java lab" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select id="taskCategorySelect" class="select-field">
+                    <option value="Education">Education & Academics</option>
+                    <option value="Career">Career & Portfolio</option>
+                    <option value="Health">Health & Wellness</option>
+                    <option value="Personal">Personal Routine</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Priority Level</label>
+                  <select id="taskPrioritySelect" class="select-field">
+                    <option value="Urgent">Urgent & Important</option>
+                    <option value="High">High Priority</option>
+                    <option value="Normal" selected>Normal Priority</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Due Date & Time</label>
+                <input type="datetime-local" id="taskDueDateInput" class="input-field">
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">+ Add Task to Daily Assistant</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Active Daily Tasks</h3>
+                <span class="card-subtitle" id="taskCompletedStats">3 of 5 tasks completed today</span>
+              </div>
+              <button class="btn btn-sm btn-outline" id="clearCompletedTasksBtn">Clear Done</button>
+            </div>
+            <div id="taskListContainer" class="task-items-list" style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1rem;"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 7: DAY PLANNER (3.5)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-day-planner">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">📅 Intelligent Day Planner ("Plan My Day")</h2>
+              <p class="card-subtitle">Synthesizes your saved tasks, upcoming deadlines, study preferences, and health goals into an optimal schedule.</p>
+            </div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <button class="btn btn-primary" id="generateDayPlanBtn">⚡ Auto-Generate Day Plan</button>
+              <button class="btn btn-secondary" id="regenerateDayPlanBtn">Re-Plan</button>
+              <button class="btn btn-outline" id="exportIcsBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export .ICS
+              </button>
+            </div>
+          </div>
+
+          <div style="background:var(--bg-subtle);padding:1.25rem;border-radius:var(--radius-md);margin-bottom:1.5rem;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Wake-Up Time</label>
+                <input type="time" id="dpWakeUp" class="input-field" value="06:30">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Sleep Time</label>
+                <input type="time" id="dpSleep" class="input-field" value="22:30">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Break Preference</label>
+                <select id="dpBreakStyle" class="select-field">
+                  <option value="pomodoro">Pomodoro (25m+5m)</option>
+                  <option value="deepwork">Deep Work (45m+15m)</option>
+                  <option value="relaxed">Relaxed (60m+20m)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Today's Top Priorities (comma separated)</label>
+              <input type="text" id="dpPriorities" class="input-field" placeholder="e.g. Java OOP assignment, DSA revision, Project meeting">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Include Exercise Block?</label>
+                <label class="toggle-container" style="margin-top:0.5rem;">
+                  <input type="checkbox" id="dpIncludeExercise" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-text">Yes, include wellness break</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Include Study Blocks from Timetable?</label>
+                <label class="toggle-container" style="margin-top:0.5rem;">
+                  <input type="checkbox" id="dpIncludeTimetable" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-text">Yes, sync with class schedule</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="rec-banner" style="margin-bottom:1rem;">
+            <div class="rec-banner-content">
+              <span class="rec-banner-icon">⚖️</span>
+              <div>
+                <strong>Workload & Wellness Balance Analysis</strong>
+                <p style="font-size:0.85rem;margin:0;">
+                  Today's total committed time: <strong>5.5 hours</strong>. Rest & hydration intervals are automatically inserted between heavy study sessions to prevent burnout.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated Day Plan Results (both containers supported) -->
+          <div id="dayPlanResult"></div>
+          <div class="day-plan-timeline" id="dayPlanTimeline"></div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 8: CALENDAR & DEADLINES (3.5)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-calendar-view">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Academic & Task Deadlines Calendar</h3>
+            <span class="badge badge-info">Synced with Daily Memory</span>
+          </div>
+          <div class="calendar-list" style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+            <div class="schedule-item">
+              <div class="schedule-time">Tomorrow 23:59</div>
+              <div class="schedule-details">
+                <strong>Java OOP Lab Exercise 4: Inheritance & Abstraction</strong>
+                <span>Submit to University Portal &bull; 10% Course Grade</span>
+              </div>
+              <span class="badge badge-warning">Due in 28 hrs</span>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time">Nov 15, 2026</div>
+              <div class="schedule-details">
+                <strong>Midterm Examination: Object-Oriented Programming (Java)</strong>
+                <span>Main Auditorium &bull; Hall 2</span>
+              </div>
+              <span class="badge badge-primary">Exam</span>
+            </div>
+            <div class="schedule-item">
+              <div class="schedule-time">Nov 22, 2026</div>
+              <div class="schedule-details">
+                <strong>Database Management Systems Term Project Report</strong>
+                <span>Team Submission &bull; MySQL Schema</span>
+              </div>
+              <span class="badge badge-info">Project</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 9: HEALTH & WELLNESS HUB (3.4)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-health-hub">
+        <div class="rec-banner" style="background:rgba(6,182,212,0.08);border-color:rgba(6,182,212,0.25);">
+          <div class="rec-banner-content">
+            <span class="rec-banner-icon">&#8505;</span>
+            <div>
+              <strong>Health & Wellness Information Notice</strong>
+              <p style="font-size:0.8rem;margin:0;">
+                The Health & Wellness Assistant provides supportive hydration, sleep habit, and posture suggestions based voluntarily on your inputs. It does not replace medical professionals or provide clinical diagnosis.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="health-hub-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem;margin-top:1rem;">
+          <!-- Card 1: Hydration Tracker -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Hydration Tracker</h3>
+              <span class="badge-tag">Daily Target</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1.5rem;margin:1.25rem 0;">
+              <div class="water-graphic-wrap">
+                <div class="water-wave-fill" id="waterGraphicFill" style="height: 70%;"></div>
+                <div class="water-graphic-level" id="waterGraphicText">70%</div>
+              </div>
+              <div>
+                <div style="font-size:1.75rem;font-weight:800;color:var(--text-primary);"><span id="waterCurrentVal">1,750</span> <small style="font-size:1rem;color:var(--text-muted);">/ 2,500 ml</small></div>
+                <p style="font-size:0.8rem;color:var(--text-secondary);margin:0.25rem 0 0.75rem 0;">Keep hydrated during study sessions to maintain cognitive focus.</p>
+                <div style="display:flex;gap:0.5rem;">
+                  <button class="btn btn-sm btn-primary" id="addWater250Btn">+250 ml</button>
+                  <button class="btn btn-sm btn-secondary" id="addWater500Btn">+500 ml</button>
+                  <button class="btn btn-sm btn-ghost" id="resetWaterBtn">Reset</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Pomodoro Timer -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Pomodoro Study-Break Timer</h3>
+              <span class="badge badge-primary" id="pomoModeBadge">Focus Session</span>
+            </div>
+            <div style="text-align:center;margin:1.25rem 0;">
+              <div style="font-size:3.5rem;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:2px;color:var(--primary);" id="pomoTimerDisplay">25:00</div>
+              <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;" id="pomoMessage">25 minutes of high-intensity study followed by 5 minutes of rest.</p>
+              <div style="display:flex;justify-content:center;gap:0.75rem;">
+                <button class="btn btn-primary" id="startPomoBtn">Start Focus</button>
+                <button class="btn btn-outline" id="pausePomoBtn">Pause</button>
+                <button class="btn btn-ghost" id="resetPomoBtn">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Sleep Tracker -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Sleep & Recovery Habits</h3>
+              <span class="badge badge-success">88% Score</span>
+            </div>
+            <div style="margin-top:1rem;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.25rem;">
+                <span class="form-label">Last Night's Sleep:</span>
+                <strong id="sleepValDisplay">7.5 Hours</strong>
+              </div>
+              <input type="range" id="sleepSlider" min="4" max="11" step="0.5" value="7.5" class="range-slider" style="width:100%;margin-bottom:1rem;">
+              <div style="font-size:0.8rem;color:var(--text-secondary);background:var(--bg-subtle);padding:0.75rem;border-radius:var(--radius-md);">
+                <strong>AI Sleep Insight:</strong> 7.5 to 8.5 hours of sleep is optimal for long-term memory consolidation in computer science and mathematics.
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Stretches -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Desk Stretches & Eye Rest</h3>
+              <button class="btn btn-sm btn-outline" onclick="playStretchBell()">Test Bell</button>
+            </div>
+            <div class="stretch-routines" style="display:flex;flex-direction:column;gap:0.85rem;margin-top:0.75rem;">
+              <div class="stretch-item" style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div>
+                  <strong>20-20-20 Eye Relief Rule</strong>
+                  <p style="font-size:0.78rem;color:var(--text-secondary);margin:0;">Every 20 mins, look at something 20 feet away for 20 seconds.</p>
+                </div>
+              </div>
+              <div class="stretch-item" style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div>
+                  <strong>Upper Neck & Shoulder Stretch</strong>
+                  <p style="font-size:0.78rem;color:var(--text-secondary);margin:0;">Tilt head gently to each side for 15 seconds to release coding posture tension.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 10: CAREER DEVELOPMENT ASSISTANT (3.6)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-career" style="max-width:100%;overflow-x:hidden;">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Career Development & Skill Roadmaps</h2>
+              <p class="card-subtitle">Connects your current academic coursework and verified skills with industry requirements.</p>
+            </div>
+            <span class="badge badge-primary">3.6 Career Module</span>
+          </div>
+        </div>
+
+        <div class="career-overview-grid">
+            <div class="career-role-select-card card">
+              <h4 class="card-title" style="font-size:0.95rem;">Select Target Career Goal</h4>
+              <p style="font-size:0.78rem;color:var(--text-secondary);">Your daily study recommendations will align with this path:</p>
+              <div class="career-roles-list">
+                <div class="career-role-item active" data-role="java_backend">
+                  <div>
+                    <strong>Junior Java / Spring Boot Backend Engineer</strong>
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin:0;">OOP, Spring Boot, REST APIs, PostgreSQL</p>
+                  </div>
+                  <span class="badge badge-success">Active Goal</span>
+                </div>
+                <div class="career-role-item" data-role="fullstack_web">
+                  <div>
+                    <strong>Full-Stack Web Developer</strong>
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin:0;">HTML/CSS, React, Node.js, Cloud DB</p>
+                  </div>
+                  <span class="badge badge-outline">Select</span>
+                </div>
+                <div class="career-role-item" data-role="ai_engineer">
+                  <div>
+                    <strong>AI & Machine Learning Engineer</strong>
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin:0;">Python, PyTorch, LangChain, RAG Systems</p>
+                  </div>
+                  <span class="badge badge-outline">Select</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-matrix-card card">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 class="card-title" style="font-size:0.95rem;">Skill Gap Matrix (Current vs Target)</h4>
+                <span class="badge-tag">Role Match: 68%</span>
+              </div>
+              <div class="skill-gap-list" id="skillGapList"></div>
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-header">
+              <h3 class="card-title">Personalized Step-by-Step Learning Roadmap</h3>
+              <span class="badge-tag">Academic-to-Career Bridge</span>
+            </div>
+            <div class="roadmap-container" id="roadmapContainer"></div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">AI Mock Interview Simulator</h3>
+                <p class="card-subtitle">Practice technical and behavioral interview questions tailored to your goal with instant AI feedback.</p>
+              </div>
+              <button class="btn btn-sm btn-primary" id="nextInterviewQBtn">Next Question</button>
+            </div>
+
+            <div class="interview-sim-box">
+              <div class="interview-question-display" id="interviewQuestionText">
+                "In Java, what is the difference between Method Overloading and Method Overriding, and when would you use each?"
+              </div>
+              <form id="interviewAnswerForm">
+                <textarea id="interviewAnswerInput" class="chat-textarea" rows="3" placeholder="Type your answer here or use speech input..."></textarea>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+                  <button type="button" class="btn btn-sm btn-outline" id="interviewVoiceBtn">Voice Answer</button>
+                  <button type="submit" class="btn btn-sm btn-primary" id="evaluateInterviewBtn">Evaluate My Answer</button>
+                </div>
+              </form>
+              <div id="interviewFeedbackResult"></div>
+            </div>
+          </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 11: AI FOOD & DIET PLANNER (Section 7)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-diet" style="max-width:100%;overflow-x:hidden;">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">🥗 AI Food & Diet Planner</h2>
+              <p class="card-subtitle">Practical, affordable, and high-protein meal planning tailored to student schedules and budgets.</p>
+            </div>
+            <span class="badge" style="background:#dcfce7;color:#15803d;font-weight:700;">Section 7 Nutrition</span>
+          </div>
+
+          <!-- Medical Disclaimer Notice -->
+          <div class="rec-banner" style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.25);margin-bottom:1.25rem;">
+            <div class="rec-banner-content">
+              <span class="rec-banner-icon">ℹ️</span>
+              <div>
+                <strong>Nutritional Guidance Notice</strong>
+                <p style="font-size:0.8rem;margin:0;">These meal plans provide general balanced nutrition guidance based on your selected preferences and budget. They do not constitute clinical dietary therapy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter & Preferences Controls -->
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;background:var(--bg-subtle);padding:1rem;border-radius:var(--radius-md);margin-bottom:1.5rem;">
+            <div style="flex:1;min-width:180px;">
+              <label class="form-label" style="font-size:0.75rem;">Dietary Preference</label>
+              <select id="dietPrefSelect" class="input-field" style="padding:0.4rem 0.6rem;">
+                <option value="non_veg" selected>Non-Vegetarian (Eggs, Chicken, Fish)</option>
+                <option value="vegetarian">Vegetarian (Lentils, Soya, Paneer)</option>
+                <option value="vegan">Plant-Based / Vegan</option>
+              </select>
+            </div>
+            <div style="flex:1;min-width:180px;">
+              <label class="form-label" style="font-size:0.75rem;">Food Budget Tier</label>
+              <select id="dietBudgetSelect" class="input-field" style="padding:0.4rem 0.6rem;">
+                <option value="budget" selected>Student Budget (Affordable Staples)</option>
+                <option value="moderate">Moderate Variety</option>
+                <option value="premium">Flexible / High Variety</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:flex-end;">
+              <button class="btn btn-primary" id="regenerateDietBtn">Update Meal Plan</button>
+            </div>
+          </div>
+
+          <!-- Daily Meal Plan Cards Grid -->
+          <h4 style="margin:0 0 0.75rem 0;font-size:1rem;color:var(--text-primary);">Today's Recommended Meals</h4>
+          <div class="health-hub-grid" id="dietMealsGrid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1rem;margin-bottom:1.5rem;">
+            <!-- Breakfast Card -->
+            <div class="card" style="border-left:4px solid #10b981;">
+              <div class="card-header" style="padding:0.75rem 1rem;">
+                <h4 style="margin:0;font-size:0.95rem;">🍳 Breakfast (08:00 AM)</h4>
+                <span class="badge badge-success">~18g Protein</span>
+              </div>
+              <div style="padding:0.5rem 1rem 1rem;">
+                <strong id="dietBreakfastTitle">3 Boiled Eggs / Moong Dal Chilla + Oats</strong>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin:0.25rem 0 0.5rem;">Under ₹30 bulk cost. High biological value protein for sustained morning focus.</p>
+                <button class="btn btn-sm btn-outline" onclick="quickSetMealAlarm('Breakfast', '08:00')">Set 08:00 AM Reminder</button>
+              </div>
+            </div>
+
+            <!-- Lunch Card -->
+            <div class="card" style="border-left:4px solid #3b82f6;">
+              <div class="card-header" style="padding:0.75rem 1rem;">
+                <h4 style="margin:0;font-size:0.95rem;">🍛 Lunch (01:00 PM)</h4>
+                <span class="badge badge-primary">~26g Protein</span>
+              </div>
+              <div style="padding:0.5rem 1rem 1rem;">
+                <strong id="dietLunchTitle">Rice / Rotis + Thick Dal Tadka + Soya Chunks Curry</strong>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin:0.25rem 0 0.5rem;">Rich in plant protein and dietary fiber with cooling cucumber salad.</p>
+                <button class="btn btn-sm btn-outline" onclick="quickSetMealAlarm('Lunch', '13:00')">Set 01:00 PM Reminder</button>
+              </div>
+            </div>
+
+            <!-- Dinner Card -->
+            <div class="card" style="border-left:4px solid #8b5cf6;">
+              <div class="card-header" style="padding:0.75rem 1rem;">
+                <h4 style="margin:0;font-size:0.95rem;">🍲 Dinner (08:00 PM)</h4>
+                <span class="badge" style="background:#ede9fe;color:#6d28d9;">~22g Protein</span>
+              </div>
+              <div style="padding:0.5rem 1rem 1rem;">
+                <strong id="dietDinnerTitle">2 Chapatis + Paneer / Chicken Stir-fry + Veg Stew</strong>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin:0.25rem 0 0.5rem;">Light and easy to digest 2 hours before bedtime for optimal deep sleep recovery.</p>
+                <button class="btn btn-sm btn-outline" onclick="quickSetMealAlarm('Dinner', '20:00')">Set 08:00 PM Reminder</button>
+              </div>
+            </div>
+
+            <!-- Healthy Snacks Card -->
+            <div class="card" style="border-left:4px solid #f59e0b;">
+              <div class="card-header" style="padding:0.75rem 1rem;">
+                <h4 style="margin:0;font-size:0.95rem;">🥜 Study Snack (05:00 PM)</h4>
+                <span class="badge" style="background:#fef3c7;color:#b45309;">~10g Protein</span>
+              </div>
+              <div style="padding:0.5rem 1rem 1rem;">
+                <strong id="dietSnackTitle">Roasted Peanuts & Sprouted Moong Chaat</strong>
+                <p style="font-size:0.78rem;color:var(--text-secondary);margin:0.25rem 0 0.5rem;">Pocket-friendly clean energy booster avoiding caffeine jitters.</p>
+                <button class="btn btn-sm btn-outline" onclick="quickSetMealAlarm('Study Snack', '17:00')">Set 05:00 PM Reminder</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Smart Grocery Checklist -->
+          <div class="card" style="background:var(--bg-subtle);">
+            <div class="card-header">
+              <h4 class="card-title" style="font-size:0.95rem;">🛒 Smart Student Grocery Checklist (Affordable High-Protein Staples)</h4>
+              <button class="btn btn-sm btn-ghost" id="resetGroceryBtn">Reset Checklist</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.75rem;padding:0.5rem 0;">
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" checked class="checkbox-custom">
+                <span>Eggs (30-egg crate ~ ₹180)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" checked class="checkbox-custom">
+                <span>Soya Chunks / Nutrela (500g ~ ₹50)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" checked class="checkbox-custom">
+                <span>Yellow Moong Dal (1 kg ~ ₹120)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" class="checkbox-custom">
+                <span>Roasted Peanuts & Chana (~ ₹80)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" class="checkbox-custom">
+                <span>Oats / Whole Wheat Atta (~ ₹140)</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;cursor:pointer;">
+                <input type="checkbox" class="checkbox-custom">
+                <span>Paneer / Curd / Dahi (Weekly)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ======================================================================
+           VIEW 12: AI YOGA & WELLNESS ASSISTANT (Section 8)
+           ====================================================================== -->
+      <main class="content-area view-container" id="view-yoga" style="max-width:100%;overflow-x:hidden;">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">🧘 AI Yoga & Mindful Wellness Assistant</h2>
+              <p class="card-subtitle">Beginner-friendly mobility flows, Pranayama breathwork, and study fatigue relief routines.</p>
+            </div>
+            <span class="badge" style="background:#f3e8ff;color:#7e22ce;font-weight:700;">Section 8 Wellness</span>
+          </div>
+
+          <!-- Interactive Breathing Circle & Pranayama -->
+          <div class="card" style="text-align:center;padding:1.5rem;background:linear-gradient(135deg, rgba(147,51,234,0.06), rgba(59,130,246,0.06));border:1px solid rgba(147,51,234,0.2);margin-bottom:1.5rem;">
+            <h3 style="margin:0 0 0.5rem;font-size:1.1rem;color:var(--text-primary);">Pranayama & 4-4-4-4 Box Breathing Visualizer</h3>
+            <p style="font-size:0.8rem;color:var(--text-secondary);max-width:550px;margin:0 auto 1.25rem;">
+              Stabilizes nervous system, reduces acute test anxiety, and boosts oxygen delivery to the prefrontal cortex.
+            </p>
+
+            <div style="display:flex;justify-content:center;align-items:center;margin:1.5rem 0;">
+              <div id="breathingCircle" style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#3b82f6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;box-shadow:0 0 25px rgba(139,92,246,0.4);transition:transform 4s ease-in-out;">
+                <span id="breathingPhaseText">Ready</span>
+              </div>
+            </div>
+
+            <div style="display:flex;justify-content:center;gap:0.75rem;">
+              <button class="btn btn-primary" id="startBreathingBtn">Start 3-Min Session</button>
+              <button class="btn btn-outline" id="stopBreathingBtn">Stop</button>
+            </div>
+          </div>
+
+          <!-- Yoga Flow Grid -->
+          <div class="health-hub-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.25rem;">
+            <!-- Routine 1: Surya Namaskar -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h4 style="margin:0;font-size:1rem;">☀️ Surya Namaskar (Sun Salutation)</h4>
+                  <small style="color:var(--text-muted);">10-15 Mins • Full Body Vitality</small>
+                </div>
+                <span class="badge badge-success">Beginner Friendly</span>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;">
+                <p><strong>12 Dynamic Postures:</strong> Pranamasana → Hastauttanasana → Hastapadasana → Ashwa Sanchalanasana → Dandasana → Ashtanga Namaskara → Bhujangasana → Parvatasana.</p>
+                <div style="background:var(--bg-subtle);padding:0.75rem;border-radius:var(--radius-sm);margin-top:0.5rem;">
+                  <strong>Cognitive Benefit:</strong> Stimulates spinal fluid circulation and releases hamstring stiffness from long study desk hours.
+                </div>
+              </div>
+            </div>
+
+            <!-- Routine 2: Desk Ergonomics & Posture Reset -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h4 style="margin:0;font-size:1rem;">💺 3-Minute Desk Posture Reset</h4>
+                  <small style="color:var(--text-muted);">Every 45 mins • No Mat Needed</small>
+                </div>
+                <span class="badge badge-primary">Study Break</span>
+              </div>
+              <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.5rem;">
+                <ul style="padding-left:1.2rem;margin:0.25rem 0;">
+                  <li><strong>Chin Tucks (10x):</strong> Retract cervical spine backwards to reverse forward head posture.</li>
+                  <li><strong>Seated Spinal Twist (15s/side):</strong> Decompresses thoracic vertebrae.</li>
+                  <li><strong>Chest Opener:</strong> Interlace hands behind back, inhale deeply.</li>
+                </ul>
+                <button class="btn btn-sm btn-outline mt-2" onclick="playStretchBell()">Test Chime Sound</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div> <!-- End main-wrapper -->
+  </div> <!-- End app-layout -->
+
+  <!-- ==========================================================================
+       MOBILE BOTTOM NAVIGATION BAR (FOR SMARTPHONES)
+       ========================================================================== -->
+  <nav class="mobile-bottom-bar" id="mobileBottomBar">
+    <button class="mob-bar-item active" data-view="dashboard">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="mob-bar-item" data-view="schedule">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Schedule</span>
+    </button>
+    <button class="mob-bar-item" data-view="study-ai">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+      <span>AI Chat</span>
+    </button>
+    <button class="mob-bar-item" data-view="health-hub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <span>Health</span>
+    </button>
+    <button class="mob-bar-item" id="mobOpenMenuBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <span>Menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile Backdrop Overlay when Drawer is open -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ==========================================================================
+       MODAL: ACTIVE ALARM TRIGGER POP-UP
+       ========================================================================== -->
+  <div class="modal-overlay" id="alarmModal">
+    <div class="modal-card alarm-modal-card">
+      <div class="alarm-icon-bell">⏰</div>
+      <h3 style="color:#ef4444;margin-bottom:0.35rem;" id="alarmModalHeader">SESSION ALARM REMINDER</h3>
+      <h4 style="font-size:1.15rem;margin-bottom:0.5rem;color:var(--text-primary);" id="alarmModalTitle">Java OOP Lab Starts Now!</h4>
+      <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.5rem;" id="alarmModalTime">Scheduled: 11:00 AM - 12:30 PM (Lab 204)</p>
+      
+      <div style="display:flex;flex-direction:column;gap:0.6rem;">
+        <button class="btn btn-primary btn-block btn-lg" id="alarmAcknowledgeBtn">
+          Acknowledge & Start Session
+        </button>
+        <button class="btn btn-outline btn-block" id="alarmSnoozeBtn">
+          Snooze 5 Minutes
+        </button>
+        <button class="btn btn-ghost btn-block" id="alarmDismissBtn" style="color:var(--accent-red);">
+          Dismiss Alarm
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: ADD NEW PERSONAL MEMORY MODAL (3.1)
+       ========================================================================== -->
+  <div class="modal-overlay" id="addMemoryModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Persistent Personal Memory</h3>
+        <button class="icon-btn" id="closeAddMemoryModalBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="addMemoryForm">
+        <div class="modal-body">
+          <p class="caption-label">This information is saved to your local assistant profile to personalize future answers without re-explaining.</p>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="newMemCategory" class="select-field">
+              <option value="learning">Academic & Learning (Skills, Level, Preferences)</option>
+              <option value="tasks">Tasks & Daily Routine (Deadlines, Timings)</option>
+              <option value="health">Health & Wellness (Sleep, Hydration, Nutrition)</option>
+              <option value="career">Career Development (Goals, Target Roles)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Memory Title / Key</label>
+            <input type="text" id="newMemTitle" class="input-field" placeholder="e.g. Java Skill Level or Dietary Preference" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Details to Remember</label>
+            <textarea id="newMemContent" class="chat-textarea" rows="3" placeholder="e.g. Currently learning Java OOP; prefers beginner explanations with small runnable code blocks and real-world analogies." required></textarea>
+          </div>
+          <div class="toggle-group">
+            <label class="toggle-container">
+              <input type="checkbox" id="newMemActive" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">Active for AI Context Retrieval immediately</span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" id="cancelAddMemoryBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Memory</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: ACTIVE CONTEXT INSPECTOR (3.1)
+       ========================================================================== -->
+  <div class="modal-overlay" id="contextInspectorModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Active Memory Context Inspector</h3>
+        <button class="icon-btn" id="closeContextInspectorBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="caption-label">The following structured context is currently available to the AI when generating personalized recommendations:</p>
+        <pre class="code-font" id="contextInspectorCode" style="background:var(--bg-subtle);padding:1rem;border-radius:var(--radius-md);overflow-x:auto;max-height:300px;font-size:0.8rem;"></pre>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="dismissInspectorBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: SETTINGS & BACKEND API CONFIGURATION (Section 6)
+       ========================================================================== -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Assistant Settings & API Integration</h3>
+        <button class="icon-btn" id="closeSettingsBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="modal-subheading">Personal Profile Details</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="settingNameInput" class="input-field" value="Alex Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Major / Department</label>
+            <input type="text" id="settingMajorInput" class="input-field" value="Computer Science">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Year of Study</label>
+            <input type="text" id="settingYearInput" class="input-field" value="Year 2">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Daily Water Goal (ml)</label>
+            <input type="number" id="settingWaterGoalInput" class="input-field" value="2500" step="100">
+          </div>
+        </div>
+
+        <h4 class="modal-subheading mt-4">External AI / Backend Integration (Optional)</h4>
+        <p class="caption-label">The system functions 100% locally with built-in reasoning. You can also connect an external LLM server or FastAPI backend.</p>
+
+        <div class="form-group">
+          <label class="form-label">External Chat API Endpoint</label>
+          <input type="text" id="apiEndpointChat" class="input-field code-font" placeholder="http://localhost:8000/api/chat (Leave blank for built-in AI)">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">API Key / Token (optional)</label>
+          <input type="password" id="apiKeyInput" class="input-field code-font" placeholder="Optional API Key">
+        </div>
+
+        <h4 class="modal-subheading mt-4">Preferences & Audio</h4>
+        <div class="toggle-group">
+          <label class="toggle-container">
+            <input type="checkbox" id="settingSoundToggle" checked>
+            <span class="toggle-slider"></span>
+            <span class="toggle-text">Play gentle sound chime on Pomodoro completion & stretch bell</span>
+          </label>
+        </div>
+        <div class="toggle-group mt-2">
+          <label class="toggle-container">
+            <input type="checkbox" id="settingVoiceReadoutToggle" checked>
+            <span class="toggle-slider"></span>
+            <span class="toggle-text">Speak AI answers aloud automatically (Text-to-Speech)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancelSettingsBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: AI MODEL & REAL API KEY CONFIGURATION MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="aiKeyModal">
+    <div class="modal-card" style="max-width:560px;">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:0.5rem;">
+          <span style="font-size:1.4rem;">⚡</span>
+          <div>
+            <h3 style="margin:0;">Connect Real AI Model (ChatGPT / Gemini / Groq)</h3>
+            <p style="font-size:0.75rem;color:var(--text-secondary);margin:0;">Enable live dynamic responses across Chatbot, Notes, Summarizer & Interviews</p>
+          </div>
+        </div>
+        <button class="icon-btn" id="closeAiKeyModalBtn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--bg-subtle);padding:0.85rem 1rem;border-radius:var(--radius-md);margin-bottom:1rem;border-left:4px solid var(--primary);">
+          <div style="font-size:0.82rem;line-height:1.45;color:var(--text-primary);">
+            <strong>Real AI Integration:</strong> Enter your API key from OpenAI, Google Gemini, Groq, or OpenRouter. The backend verifies your key live and saves it securely to power all AI modules with genuine answers like ChatGPT.
+          </div>
+        </div>
+
+        <form id="aiKeyConfigForm">
+          <div class="form-group">
+            <label class="form-label">AI Provider</label>
+            <select id="aiProviderSelect" class="select-field">
+              <option value="openai">OpenAI (ChatGPT - gpt-4o-mini / gpt-4o)</option>
+              <option value="gemini">Google Gemini (gemini-1.5-flash / gemini-2.0)</option>
+              <option value="groq">Groq (Ultra-Fast Llama 3.3 70B - Free Tier)</option>
+              <option value="openrouter">OpenRouter (Multi-model aggregator)</option>
+              <option value="deepseek">DeepSeek (deepseek-chat)</option>
+              <option value="custom">Custom OpenAI-Compatible Endpoint</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">API Key</label>
+            <div style="position:relative;">
+              <input type="password" id="modalApiKeyInput" class="input-field code-font" placeholder="sk-... (Paste your real API key here)" required style="padding-right:45px;">
+              <button type="button" class="btn btn-xs btn-ghost" id="toggleAiKeyVisibilityBtn" style="position:absolute;right:8px;top:8px;">👁️</button>
+            </div>
+            <span style="font-size:0.72rem;color:var(--text-muted);display:block;margin-top:0.25rem;" id="aiKeyHint">
+              Get an OpenAI key from platform.openai.com or a free Gemini key from aistudio.google.com
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Model Name</label>
+            <input type="text" id="modalAiModelInput" class="input-field code-font" value="gpt-4o-mini" required>
+          </div>
+
+          <div class="form-group" id="customApiUrlGroup" style="display:none;">
+            <label class="form-label">Base API URL</label>
+            <input type="text" id="modalApiUrlInput" class="input-field code-font" value="https://api.openai.com/v1/chat/completions">
+          </div>
+
+          <div id="aiTestFeedbackBox" style="margin-top:0.75rem;"></div>
+
+          <div class="modal-footer" style="padding:1rem 0 0 0;display:flex;justify-content:space-between;align-items:center;">
+            <button type="button" class="btn btn-outline" id="testAiKeyBtn">Test Connection</button>
+            <button type="submit" class="btn btn-primary" id="saveAiKeyBtn">Save & Activate Real AI</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Audio Chime for Pomodoro and Stretches -->
+  <audio id="chimeAudio" preload="auto" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/DCkF8uEjuW1+3Ut3E1FjiS0+rRvHlBGD2P0OfQw35JHz2KzOPLwYRSJzqFyeHHu4lcLDZ/w9y+rYBUIjF7v9aqo3lRJDN4uM6jmX1XKi1urMCbjH9cKiVqqryfhXpcJhtlpbOZf3JaJR1hn66Vem1PHxhenqSPb2NOGhRemZmIal5IGBBZk46AZFVEFQ1VjoV2YEtCDwtUiINxW0E6BglOh35tVz81CQdGg3hoUTguBgRBf29fTDMmBQFAbGBNMiQH/P9qWkwvIAM="></audio>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.warn('PWA ServiceWorker registration notice:', err.message);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

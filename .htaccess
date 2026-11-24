@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /ai-life-companion/
+
+# If file exists, serve directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route /api/something to api/something.php
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^api/([a-zA-Z0-9_-]+)$ api/$1.php [L,QSA]
+
+# Default index
+DirectoryIndex index.php index.html

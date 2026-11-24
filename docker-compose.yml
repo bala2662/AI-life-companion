@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai_life_companion_web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - APP_ENV=production
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=ai_life_companion
+      - DB_USER=root
+      - DB_PASS=secret123
+      - AI_API_KEY=${AI_API_KEY:-}
+      - AI_API_URL=${AI_API_URL:-https://api.openai.com/v1/chat/completions}
+      - AI_MODEL=${AI_MODEL:-gpt-4o-mini}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: ai_life_companion_mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret123
+      - MYSQL_DATABASE=ai_life_companion
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/01_database.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-psecret123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+    driver: local

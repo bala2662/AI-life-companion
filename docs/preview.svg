@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" style="background:#0b0f19; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;">
+  <defs>
+    <linearGradient id="gradBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1200" height="675" fill="url(#gradBg)"/>
+
+  <!-- Top Hero Bar -->
+  <rect x="0" y="0" width="1200" height="64" fill="#0f172a" border-bottom="1px solid #334155"/>
+  <line x1="0" y1="64" x2="1200" y2="64" stroke="#1e293b" stroke-width="2"/>
+  
+  <!-- Logo & Title -->
+  <circle cx="48" cy="32" r="18" fill="url(#gradAccent)"/>
+  <text x="48" y="38" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">✦</text>
+  <text x="78" y="38" font-size="18" font-weight="700" fill="#f8fafc">AI Life Companion <tspan fill="#38bdf8" font-weight="500">for Students</tspan></text>
+
+  <!-- Top Badges -->
+  <rect x="760" y="18" width="105" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="812" y="36" font-size="12" font-weight="600" fill="#f59e0b" text-anchor="middle">🔥 14-Day Streak</text>
+
+  <rect x="880" y="18" width="115" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="937" y="36" font-size="12" font-weight="600" fill="#10b981" text-anchor="middle">⚡ 91% Synergy</text>
+
+  <rect x="1010" y="18" width="150" height="28" rx="14" fill="url(#gradAccent)"/>
+  <text x="1085" y="36" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">👤 Alex Smith (Demo)</text>
+
+  <!-- Left Sidebar -->
+  <rect x="24" y="80" width="220" height="570" rx="12" fill="url(#gradCard)" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+  <text x="44" y="112" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="1">STUDENT PORTAL</text>
+  
+  <!-- Navigation Items -->
+  <rect x="36" y="126" width="196" height="36" rx="8" fill="#2563eb" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+  <text x="52" y="149" font-size="13" font-weight="600" fill="#60a5fa">📊 Overview Dashboard</text>
+
+  <text x="52" y="185" font-size="13" font-weight="500" fill="#cbd5e1">💬 Unified AI Chatbot</text>
+  <text x="52" y="221" font-size="13" font-weight="500" fill="#cbd5e1">📅 Timetable &amp; Schedule</text>
+  <text x="52" y="257" font-size="13" font-weight="500" fill="#cbd5e1">📚 Notes &amp; PDF RAG</text>
+  <text x="52" y="293" font-size="13" font-weight="500" fill="#cbd5e1">✅ Tasks &amp; Deadlines</text>
+  <text x="52" y="329" font-size="13" font-weight="500" fill="#cbd5e1">🏋️ Fitness &amp; Exercise</text>
+  <text x="52" y="365" font-size="13" font-weight="500" fill="#cbd5e1">💧 Wellness &amp; Hydration</text>
+  <text x="52" y="401" font-size="13" font-weight="500" fill="#cbd5e1">🎯 Career Roadmaps</text>
+  <text x="52" y="437" font-size="13" font-weight="500" fill="#cbd5e1">🧠 Personal Memories</text>
+
+  <!-- Mobile Responsive App Preview Badge -->
+  <rect x="36" y="570" width="196" height="60" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="48" y="594" font-size="12" font-weight="700" fill="#38bdf8">📱 Fully Responsive PWA</text>
+  <text x="48" y="614" font-size="10" fill="#94a3b8">Mobile Touch, Drawer &amp; .ICS Sync</text>
+
+  <!-- Main Content Center -->
+  <!-- 4 KPI Cards -->
+  <g transform="translate(260, 80)">
+    <!-- KPI 1: Real Task Rate -->
+    <rect x="0" y="0" width="210" height="90" rx="10" fill="url(#gradCard)" stroke="#334155" stroke-width="1"/>
+    <text x="16" y="26" font-size="11" font-weight="600" fill="#94a3b8">TASK COMPLETION RATE</text>
+    <text x="16" y="58" font-size="26" font-weight="800" fill="#38bdf8">86%</text>
+    <text x="16" y="76" font-size="11" fill="#10b981">↑ 12 of 14 tasks done</text>
+
+    <!-- KPI 2: Live Hydration -->
+    <rect x="226" y="0" width="210" height="90" rx="10" fill="url(#gradCard)" stroke="#334155" stroke-width="1"/>
+    <text x="242" y="26" font-size="11" font-weight="600" fill="#94a3b8">TODAY'S HYDRATION</text>
+    <text x="242" y="58" font-size="26" font-weight="800" fill="#06b6d4">1,750 <tspan font-size="14" fill="#94a3b8">/ 2,500 ml</tspan></text>
+    <text x="242" y="76" font-size="11" fill="#38bdf8">70% target reached</text>
+
+    <!-- KPI 3: Next Academic Deadline -->
+    <rect x="452" y="0" width="210" height="90" rx="10" fill="url(#gradCard)" stroke="#334155" stroke-width="1"/>
+    <text x="468" y="26" font-size="11" font-weight="600" fill="#94a3b8">NEAREST DEADLINE</text>
+    <text x="468" y="54" font-size="18" font-weight="700" fill="#f87171">Java OOP Lab</text>
+    <text x="468" y="76" font-size="11" fill="#fca5a5">Tomorrow • 11:59 PM</text>
+
+    <!-- KPI 4: Active RAG Knowledge -->
+    <rect x="678" y="0" width="220" height="90" rx="10" fill="url(#gradCard)" stroke="#334155" stroke-width="1"/>
+    <text x="694" y="26" font-size="11" font-weight="600" fill="#94a3b8">GROUNDED RAG ENGINE</text>
+    <text x="694" y="54" font-size="16" font-weight="700" fill="#a78bfa">PDF Vector Search</text>
+    <text x="694" y="76" font-size="11" fill="#c084fc">Page-level citations active</text>
+  </g>
+
+  <!-- Center Feature Box 1: AI Chat & Reasoning Meta -->
+  <g transform="translate(260, 185)">
+    <rect x="0" y="0" width="530" height="465" rx="12" fill="url(#gradCard)" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="530" height="44" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="28" font-size="14" font-weight="700" fill="#f8fafc">💬 Unified AI Study Chatbot <tspan font-size="11" font-weight="500" fill="#10b981">• Live Multi-Turn Context</tspan></text>
+
+    <!-- Chat User Message -->
+    <rect x="200" y="60" width="310" height="48" rx="8" fill="#2563eb"/>
+    <text x="215" y="80" font-size="12" fill="#ffffff">Can you explain AVL Tree rotations with</text>
+    <text x="215" y="96" font-size="12" fill="#ffffff">an example from my uploaded CS201 PDF?</text>
+
+    <!-- Chat Assistant Message -->
+    <rect x="20" y="120" width="490" height="280" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    
+    <!-- RAG Citation Chip -->
+    <rect x="35" y="132" width="290" height="22" rx="4" fill="#312e81" stroke="#6366f1" stroke-width="1"/>
+    <text x="45" y="147" font-size="10" font-weight="600" fill="#e0e7ff">📄 Cited: CS201 Lecture 4: Balanced BST (Page 2)</text>
+
+    <text x="35" y="175" font-size="12" font-weight="600" fill="#38bdf8">### AVL Tree Self-Balancing Rotations</text>
+    <text x="35" y="198" font-size="11" fill="#cbd5e1">According to your uploaded lecture slides, an AVL tree maintains a balance factor</text>
+    <text x="35" y="214" font-size="11" fill="#cbd5e1">between -1 and +1 at every node. Four rotation types restore balance in O(1) time:</text>
+
+    <!-- Code Block Box -->
+    <rect x="35" y="230" width="460" height="120" rx="6" fill="#020617" stroke="#1e293b" stroke-width="1"/>
+    <text x="48" y="250" font-size="10" font-family="monospace" fill="#94a3b8">// Left-Right Rotation (LR)</text>
+    <text x="48" y="270" font-size="10" font-family="monospace" fill="#60a5fa">Node*</text>
+    <text x="85" y="270" font-size="10" font-family="monospace" fill="#f8fafc">rotateLR(Node* node) {</text>
+    <text x="68" y="290" font-size="10" font-family="monospace" fill="#f8fafc">node-&gt;left = rotateLeft(node-&gt;left);</text>
+    <text x="68" y="310" font-size="10" font-family="monospace" fill="#f8fafc">return rotateRight(node);</text>
+    <text x="48" y="330" font-size="10" font-family="monospace" fill="#f8fafc">}</text>
+
+    <text x="35" y="375" font-size="10" fill="#10b981">✓ Memory Applied: Beginner Java Learner | Visual Explanation Style</text>
+    <text x="35" y="390" font-size="10" fill="#64748b">Search Complexity: strictly O(log n) guaranteed.</text>
+
+    <!-- Chat Input Box -->
+    <rect x="20" y="415" width="490" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="439" font-size="12" fill="#64748b">Ask about assignments, code, exam prep, or health...</text>
+    <rect x="440" y="420" width="60" height="28" rx="6" fill="url(#gradAccent)"/>
+    <text x="470" y="438" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Send</text>
+  </g>
+
+  <!-- Right Side Column: PDF RAG Engine & Schedule Export -->
+  <g transform="translate(805, 185)">
+    <!-- Box 1: Document RAG & Summary -->
+    <rect x="0" y="0" width="370" height="260" rx="12" fill="url(#gradCard)" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="40" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="18" y="26" font-size="13" font-weight="700" fill="#f8fafc">📑 In-Browser PDF.js &amp; AI Summarizer</text>
+
+    <rect x="18" y="55" width="334" height="60" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-dasharray="4" stroke-width="1.5"/>
+    <text x="185" y="82" font-size="12" font-weight="600" fill="#60a5fa" text-anchor="middle">📥 Drag &amp; Drop Course Lecture PDF</text>
+    <text x="185" y="100" font-size="10" fill="#94a3b8" text-anchor="middle">Client-Side PDF.js Extraction • Zero Server Bloat</text>
+
+    <text x="18" y="135" font-size="11" font-weight="600" fill="#94a3b8">Summary Depth &amp; Format:</text>
+    <rect x="18" y="145" width="80" height="24" rx="4" fill="#2563eb"/>
+    <text x="58" y="161" font-size="10" font-weight="600" fill="#ffffff" text-anchor="middle">Detailed</text>
+
+    <rect x="106" y="145" width="105" height="24" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="158" y="161" font-size="10" font-weight="500" fill="#cbd5e1" text-anchor="middle">Exam Key Points</text>
+
+    <rect x="219" y="145" width="70" height="24" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="254" y="161" font-size="10" font-weight="500" fill="#cbd5e1" text-anchor="middle">Bullets</text>
+
+    <!-- Indexed Document Item -->
+    <rect x="18" y="180" width="334" height="68" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="30" y="202" font-size="11" font-weight="700" fill="#f8fafc">CS201_Lecture4_Balanced_Trees.pdf</text>
+    <text x="30" y="220" font-size="10" fill="#94a3b8">2 Pages • 2 Chunks Indexed • Ready for Q&amp;A</text>
+    <rect x="270" y="196" width="70" height="24" rx="4" fill="url(#gradAccent)"/>
+    <text x="305" y="212" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Query RAG</text>
+
+    <!-- Box 2: Smart Schedule & RFC 5545 Sync -->
+    <rect x="0" y="275" width="370" height="190" rx="12" fill="url(#gradCard)" stroke="#334155" stroke-width="1" filter="url(#shadow)"/>
+    <rect x="0" y="275" width="370" height="40" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="18" y="301" font-size="13" font-weight="700" fill="#f8fafc">📅 Smart Timetable &amp; Calendar Export</text>
+
+    <text x="18" y="335" font-size="11" fill="#cbd5e1">09:00 - 10:30 • <tspan font-weight="700" fill="#38bdf8">Data Structures &amp; Algorithms</tspan></text>
+    <text x="18" y="352" font-size="10" fill="#94a3b8">Lecture Hall B3 • Prof. Harrison</text>
+
+    <text x="18" y="378" font-size="11" fill="#cbd5e1">11:00 - 12:30 • <tspan font-weight="700" fill="#a78bfa">Object Oriented Programming (Java)</tspan></text>
+    <text x="18" y="395" font-size="10" fill="#94a3b8">Lab 204 • Dr. Sundaram</text>
+
+    <!-- .ICS Export Button -->
+    <rect x="18" y="415" width="334" height="36" rx="6" fill="url(#gradGreen)"/>
+    <text x="185" y="438" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">📅 Export to Google / Apple Calendar (.ICS)</text>
+  </g>
+</svg>
